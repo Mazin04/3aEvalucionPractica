@@ -22,8 +22,13 @@ public class DarAltaPrimController extends ViewController{
     private AnchorPane pantallamenu;
 
     @FXML
-    void switchToSecondary(MouseEvent event) {
+    void irAltaEscultura(MouseEvent event) throws Exception {
+        galeriaController.cargarVista(IVistas.VIEW_DARALTATRES);
+    }
 
+    @FXML
+    void irAltaPintura(MouseEvent event) throws Exception {
+        galeriaController.cargarVista(IVistas.VIEW_DARALTADOS);
     }
 
     @FXML

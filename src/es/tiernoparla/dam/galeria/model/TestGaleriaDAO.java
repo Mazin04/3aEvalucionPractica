@@ -12,14 +12,12 @@ public class TestGaleriaDAO implements GaleriaDAO {
         if(lista.size()==0){
             for(int i=0; i<10; i++){
                 if(i%2 ==0){
-                    lista.add(new Pictorica(i+1, "Obra"+ i, "Autor" + i, 33+i, 44, 55, 5, "Descripción" + i, "Pictórica", "JWD", "a"+i));
+                    lista.add(new Pictorica(i+1, "Obra"+ i, "Autor" + i, 33+i, 44+i, 55+i, 5+i, "Descripción" + i, "Pictórica", "JDWS", "a"+i));
                 } else {
-                    lista.add(new Escultura(i+1, "Obra"+ i, "Autor" + i, 33+i, 44, 55, 5, "Descripción" + i, "Escultura", "JWD", "b"+i));
+                    lista.add(new Escultura(i+1, "Obra"+ i, "Autor" + i, 33+i, 44+i, 55+i, 5+i, "Descripción" + i, "Escultura", "JDWS", "b"+i));
                 }
             }
         }
-
-            
         return lista;
     }
 

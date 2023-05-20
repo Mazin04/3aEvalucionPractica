@@ -5,6 +5,7 @@ public abstract class Obra {
     protected final String UNIDAD_MONEDA_EUR = "EUR";
     protected final String UNIDAD_ALTURA = "m";
     protected final String UNIDAD_PESO = "t";
+    public static int contador;
     protected String nombre;
     protected String autor;
     protected double precio;
@@ -29,6 +30,7 @@ public abstract class Obra {
         this.tipo = tipo;
         this.galeria = galeria;
         this.id = id;
+        contador++;
     }
 
     @Override

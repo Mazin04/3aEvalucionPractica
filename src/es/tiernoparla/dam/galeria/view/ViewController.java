@@ -13,6 +13,5 @@ public abstract class ViewController {
     }
 
     public abstract void init(List<Obra> lista);
-
     
 }

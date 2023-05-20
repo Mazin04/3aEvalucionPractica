@@ -112,14 +112,14 @@
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <TableView fx:id="tblObras" layoutX="45.0" layoutY="188.0" prefHeight="455.0" prefWidth="664.0" AnchorPane.leftAnchor="45.0">
+      <TableView fx:id="tblObras" layoutX="45.0" layoutY="188.0" onMouseClicked="#seleccionarObra" prefHeight="455.0" prefWidth="664.0" AnchorPane.leftAnchor="45.0">
         <columns>
           <TableColumn fx:id="colNombre" prefWidth="108.0" text="Nombre" />
           <TableColumn fx:id="colAutor" prefWidth="93.0" text="Autor" />
             <TableColumn fx:id="colTipo" prefWidth="93.0" text="Tipo" />
-            <TableColumn prefWidth="164.0" text="Material / Técnica" />
-            <TableColumn fx:id="colDesc" prefWidth="89.0" text="Precio (€)" />
-            <TableColumn prefWidth="116.0" text="Galeria" />
+            <TableColumn fx:id="colDetalle" prefWidth="164.0" text="Material / Técnica" />
+            <TableColumn fx:id="colPrecio" prefWidth="89.0" text="Precio (€)" />
+            <TableColumn fx:id="colGaleria" prefWidth="116.0" text="Galeria" />
         </columns>
       </TableView>
       <TextField fx:id="txfNombre" layoutX="918.0" layoutY="243.0" prefHeight="25.0" prefWidth="580.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
