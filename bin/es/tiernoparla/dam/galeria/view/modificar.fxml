@@ -2,6 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -12,117 +14,147 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="pantallamodificar" prefHeight="-1.0" prefWidth="-1.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.tiernoparla.dam.galeria.view.ModificarController">
+<AnchorPane fx:id="pantallamodificar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.tiernoparla.dam.galeria.view.ModificarController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true">
+      <ImageView fitHeight="800.0" fitWidth="1280.0" layoutX="7.0" pickOnBounds="true">
          <image>
             <Image url="@../../../../../../img/elegant_watercolor_background.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="btnCancelar" layoutX="36.0" layoutY="511.0" mnemonicParsing="false" onMouseClicked="#irMenu" prefHeight="42.0" prefWidth="192.0" text="Cancelar">
+      <Button fx:id="btnCancelar" layoutX="45.0" layoutY="699.0" mnemonicParsing="false" onMouseClicked="#irMenu" prefHeight="42.0" prefWidth="192.0" text="Cancelar">
          <font>
             <Font name="Calibri" size="16.0" />
          </font>
       </Button>
-      <Text fill="#0d6553" layoutX="158.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecciona una obra para modificar:" AnchorPane.topAnchor="75.0">
+      <Text fill="#0d6553" layoutX="472.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecciona una obra:" AnchorPane.topAnchor="63.0">
          <font>
             <Font name="Calibri" size="40.0" />
          </font>
       </Text>
-      <Button fx:id="btnConfirmar" layoutX="353.0" layoutY="511.0" mnemonicParsing="false" onMouseClicked="#modificar" prefHeight="42.0" prefWidth="192.0" text="Confirmar">
-         <font>
-            <Font name="Calibri" size="16.0" />
-         </font>
-      </Button>
-      <Label layoutX="576.0" layoutY="179.0" text="Nombre:" AnchorPane.rightAnchor="265.0">
+      <Label layoutX="840.0" layoutY="245.0" text="Nombre:" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="593.0" layoutY="209.0" text="Autor:" AnchorPane.rightAnchor="265.0">
+      <Label layoutX="858.0" layoutY="275.0" text="Autor:" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="571.0" layoutY="240.0" text="Precio (€):" AnchorPane.rightAnchor="265.0">
+      <Label layoutX="831.0" layoutY="306.0" text="Precio (€):" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="524.0" layoutY="270.0" text="Altura (metros):" AnchorPane.rightAnchor="265.0">
+      <Label layoutX="791.0" layoutY="336.0" text="Altura (metros):" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="515.0" layoutY="302.0" text="Peso (toneladas):" AnchorPane.rightAnchor="267.0">
+      <Label layoutX="780.0" layoutY="368.0" text="Peso (toneladas):" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="570.0" layoutY="330.0" text="Material:" AnchorPane.rightAnchor="268.0">
+      <Label layoutX="772.0" layoutY="436.0" text="Material / Técnica:" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="508.0" layoutY="360.0" text="Número de piezas:" AnchorPane.rightAnchor="265.0">
+      <Label layoutX="772.0" layoutY="466.0" text="Número de piezas:" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="550.0" layoutY="390.0" text="Descripción:" AnchorPane.rightAnchor="265.0">
+      <Label layoutX="816.0" layoutY="496.0" text="Descripción:" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="579.0" layoutY="420.0" text="Galería:" AnchorPane.rightAnchor="265.0">
+      <Label layoutX="848.0" layoutY="526.0" text="Galería:" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="txfAutor" layoutX="655.0" layoutY="207.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.leftAnchor="655.0" AnchorPane.rightAnchor="45.0">
+      <TextField fx:id="txfAutor" layoutX="918.0" layoutY="273.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <TextField fx:id="txfPrecio" layoutX="655.0" layoutY="238.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.leftAnchor="655.0" AnchorPane.rightAnchor="45.0">
+      <TextField fx:id="txfPrecio" layoutX="918.0" layoutY="304.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <TextField fx:id="txfAltura" layoutX="655.0" layoutY="268.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.leftAnchor="655.0" AnchorPane.rightAnchor="45.0">
+      <TextField fx:id="txfAltura" layoutX="918.0" layoutY="334.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <TextField fx:id="txfPeso" layoutX="655.0" layoutY="300.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.leftAnchor="655.0" AnchorPane.rightAnchor="45.0" />
-      <TextField fx:id="txfMaterial" layoutX="655.0" layoutY="328.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.leftAnchor="655.0" AnchorPane.rightAnchor="45.0">
+      <TextField fx:id="txfPeso" layoutX="918.0" layoutY="366.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0" />
+      <TextField fx:id="txfMaterial" layoutX="918.0" layoutY="434.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <TextField fx:id="txfPiezas" layoutX="655.0" layoutY="358.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.leftAnchor="655.0" AnchorPane.rightAnchor="45.0">
+      <TextField fx:id="txfPiezas" layoutX="918.0" layoutY="464.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <TextField fx:id="txfDesc" layoutX="655.0" layoutY="388.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.leftAnchor="655.0" AnchorPane.rightAnchor="45.0">
+      <TextField fx:id="txfDesc" layoutX="918.0" layoutY="494.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <TextField fx:id="txfGaleria" layoutX="655.0" layoutY="418.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.leftAnchor="655.0" AnchorPane.rightAnchor="45.0">
+      <TextField fx:id="txfGaleria" layoutX="918.0" layoutY="524.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <TableView fx:id="tblObras" layoutX="36.0" layoutY="143.0" prefHeight="324.0" prefWidth="440.0" AnchorPane.leftAnchor="45.0">
+      <TableView fx:id="tblObras" layoutX="45.0" layoutY="188.0" prefHeight="455.0" prefWidth="664.0" AnchorPane.leftAnchor="45.0">
         <columns>
-          <TableColumn fx:id="colNombre" prefWidth="114.0" text="Nombre" />
-          <TableColumn fx:id="colAutor" prefWidth="78.0" text="Autor" />
-            <TableColumn fx:id="colTipo" prefWidth="70.0" text="Tipo" />
-            <TableColumn fx:id="colDesc" prefWidth="185.0" text="Descripción" />
+          <TableColumn fx:id="colNombre" prefWidth="108.0" text="Nombre" />
+          <TableColumn fx:id="colAutor" prefWidth="93.0" text="Autor" />
+            <TableColumn fx:id="colTipo" prefWidth="93.0" text="Tipo" />
+            <TableColumn prefWidth="164.0" text="Material / Técnica" />
+            <TableColumn fx:id="colDesc" prefWidth="89.0" text="Precio (€)" />
+            <TableColumn prefWidth="116.0" text="Galeria" />
         </columns>
       </TableView>
-      <TextField fx:id="txfNombre" layoutX="655.0" layoutY="177.0" prefHeight="25.0" prefWidth="202.0" />
+      <TextField fx:id="txfNombre" layoutX="918.0" layoutY="243.0" prefHeight="25.0" prefWidth="580.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
+         <padding>
+            <Insets top="5.0" />
+         </padding></TextField>
+      <Label layoutX="867.0" layoutY="401.0" text="Tipo:" AnchorPane.rightAnchor="380.0">
+         <font>
+            <Font name="Calibri" size="17.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="chbTipo" layoutX="918.0" layoutY="399.0" prefHeight="25.0" prefWidth="280.0" />
+      <ButtonBar layoutX="404.0" layoutY="697.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="46.0" prefWidth="794.0">
+         <buttons>
+            <Button fx:id="btnModificar" mnemonicParsing="false" onMouseClicked="#modificar" prefHeight="42.0" prefWidth="192.0" text="Modificar Obra">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnPrecio" mnemonicParsing="false" onMouseClicked="#calcularPrecio" prefHeight="42.0" prefWidth="192.0" text="Calcular Precio">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnVisualizar" mnemonicParsing="false" onMouseClicked="#visualizar" prefHeight="42.0" prefWidth="192.0" text="Visualizar Obra">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEtiqueta" mnemonicParsing="false" onMouseClicked="#imprimir" prefHeight="42.0" prefWidth="192.0" text="Imprimir Etiqueta">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Button>
+         </buttons>
+      </ButtonBar>
    </children>
 </AnchorPane>

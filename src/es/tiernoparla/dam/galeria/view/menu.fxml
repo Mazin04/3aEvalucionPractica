@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -7,60 +8,52 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.tiernoparla.dam.galeria.view.MenuController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.tiernoparla.dam.galeria.view.MenuController">
   <children>
-    <AnchorPane fx:id="pantallamenu" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane fx:id="pantallamenu" prefHeight="670.0" prefWidth="1000.0" VBox.vgrow="ALWAYS">
          <children>
-            <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true">
+            <ImageView fitHeight="800.0" fitWidth="1280.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../../../../img/elegant_watercolor_background.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="194.0" fitWidth="252.0" layoutX="324.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="280.0" fitWidth="371.0" layoutX="455.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../img/logo-transparente-verde.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnAlta" layoutX="354.0" layoutY="280.0" mnemonicParsing="false" onMouseClicked="#irDarAlta" prefHeight="42.0" prefWidth="192.0" text="Dar de alta">
+            <Button fx:id="btnImportar" layoutX="1047.0" layoutY="721.0" mnemonicParsing="false" onMouseClicked="#importar" prefHeight="42.0" prefWidth="192.0" text="Importar fichero">
                <font>
                   <Font name="Calibri" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnModificar" layoutX="132.0" layoutY="301.0" mnemonicParsing="false" onMouseClicked="#irModificar" prefHeight="42.0" prefWidth="192.0" text="Modificar">
-               <font>
-                  <Font name="Calibri" size="16.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnVisualizar" layoutX="576.0" layoutY="301.0" mnemonicParsing="false" onMouseClicked="#irVisualizar" prefHeight="42.0" prefWidth="192.0" text="Visualizar">
-               <font>
-                  <Font name="Calibri" size="16.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnPrecio" layoutX="354.0" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#irObtenerPrecio" prefHeight="42.0" prefWidth="192.0" text="Obtener precio">
-               <font>
-                  <Font name="Calibri" size="16.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnExportar" layoutX="132.0" layoutY="364.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="192.0" text="Exportar a fichero">
-               <font>
-                  <Font name="Calibri" size="16.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnEtiqueta" layoutX="576.0" layoutY="364.0" mnemonicParsing="false" onMouseClicked="#irImprimir" prefHeight="42.0" prefWidth="192.0" text="Imprimir etiqueta">
-               <font>
-                  <Font name="Calibri" size="16.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnExposicion" layoutX="324.0" layoutY="430.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="252.0" text="Ver exposición">
-               <font>
-                  <Font name="Calibri" size="16.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnImportar" layoutX="672.0" layoutY="511.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="192.0" text="Importar fichero">
-               <font>
-                  <Font name="Calibri" size="16.0" />
-               </font>
-            </Button>
+            <VBox alignment="CENTER" layoutX="412.0" layoutY="343.0" prefHeight="312.0" prefWidth="457.0" spacing="20.0">
+               <children>
+                  <Button fx:id="btnAlta" mnemonicParsing="false" onMouseClicked="#irDarAlta" prefHeight="42.0" prefWidth="371.0" text="Dar de alta">
+                     <font>
+                        <Font name="Calibri" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnExposicion" mnemonicParsing="false" onMouseClicked="#irExposicion" prefHeight="42.0" prefWidth="371.0" text="Ver exposición">
+                     <font>
+                        <Font name="Calibri" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnSeleccionar" mnemonicParsing="false" onMouseClicked="#irSeleccionar" prefHeight="42.0" prefWidth="371.0" text="Modificar / Precio / Visualizar / Imprimir una etiqueta" textOverrun="CLIP">
+                     <font>
+                        <Font name="Calibri" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnExportar" mnemonicParsing="false" onMouseClicked="#exportar" prefHeight="42.0" prefWidth="371.0" text="Exportar a fichero">
+                     <font>
+                        <Font name="Calibri" size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
          </children>
     </AnchorPane>
   </children>

@@ -14,9 +14,6 @@ public class MenuController extends ViewController{
     private Button btnAlta;
 
     @FXML
-    private Button btnEtiqueta;
-
-    @FXML
     private Button btnExportar;
 
     @FXML
@@ -26,16 +23,20 @@ public class MenuController extends ViewController{
     private Button btnImportar;
 
     @FXML
-    private Button btnModificar;
-
-    @FXML
-    private Button btnPrecio;
-
-    @FXML
-    private Button btnVisualizar;
+    private Button btnSeleccionar;
 
     @FXML
     private AnchorPane pantallamenu;
+
+    @FXML
+    void exportar(MouseEvent event) {
+
+    }
+
+    @FXML
+    void importar(MouseEvent event) {
+
+    }
 
     @FXML
     void irDarAlta(MouseEvent event) throws Exception {
@@ -43,27 +44,19 @@ public class MenuController extends ViewController{
     }
 
     @FXML
-    void irImprimir(MouseEvent event) throws Exception {
-        galeriaController.cargarVista(null);
+    void irExposicion(MouseEvent event) throws Exception{
+        galeriaController.cargarVista(IVistas.VIEW_EXPO);
     }
 
     @FXML
-    void irModificar(MouseEvent event) throws Exception {
+    void irSeleccionar(MouseEvent event) throws Exception {
         galeriaController.cargarVista(IVistas.VIEW_MODIFICAR);
     }
 
-    @FXML
-    void irObtenerPrecio(MouseEvent event) throws Exception {
-        galeriaController.cargarVista(IVistas.VIEW_PRECIO);
-    }
-
-    @FXML
-    void irVisualizar(MouseEvent event) throws Exception {
-        galeriaController.cargarVista(IVistas.VIEW_VISUALIZAR);
-    }
-
     @Override
-    public void init(List<Obra> list) {
+    public void init(List<Obra> lista) {
+
     }
 
 }
+

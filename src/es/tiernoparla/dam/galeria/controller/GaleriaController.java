@@ -32,7 +32,7 @@ public class GaleriaController extends Application{
     public void start(Stage stage) throws Exception {
         currentStage = stage;
         MenuController viewController = (MenuController)cargarVista(IVistas.VIEW_MENU);
-
+        viewController.init(obtenerAlumnos());
         stage.setOnCloseRequest(event -> {
             event.consume();
             cerrar(stage);

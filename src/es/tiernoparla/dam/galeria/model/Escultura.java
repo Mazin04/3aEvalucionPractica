@@ -4,8 +4,9 @@ public class Escultura extends Obra {
     //Atributos
     private String material;
 
-    public Escultura(int id, String nombre, String autor, double precio, double altura, double peso, int numeroPiezas, String descripcion, String material, String galeria) {
-        super(id, nombre, autor, precio, altura, peso, numeroPiezas, descripcion, material, galeria);
+    public Escultura(int id, String nombre, String autor, double precio, double altura, double peso, int numeroPiezas,
+            String descripcion, String tipo, String galeria, String material) {
+        super(id, nombre, autor, precio, altura, peso, numeroPiezas, descripcion, tipo, galeria);
         this.material = material;
     }
 

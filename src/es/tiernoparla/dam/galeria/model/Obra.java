@@ -16,6 +16,8 @@ public abstract class Obra {
     protected String galeria;
     protected int id;
 
+
+
     public Obra(int id, String nombre, String autor, double precio, double altura, double peso, int numeroPiezas, String descripcion, String tipo, String galeria) {
         this.nombre = nombre;
         this.autor = autor;
@@ -155,5 +157,21 @@ public abstract class Obra {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getGaleria() {
+        return galeria;
+    }
+
+    public void setGaleria(String galeria) {
+        this.galeria = galeria;
     }
 }

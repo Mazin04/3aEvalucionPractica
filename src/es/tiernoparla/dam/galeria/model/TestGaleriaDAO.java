@@ -10,10 +10,16 @@ public class TestGaleriaDAO implements GaleriaDAO {
     @Override
     public List<Obra> obtenerObras() throws Exception {
         if(lista.size()==0){
-            for(int i=0; i<5; i++){
-                lista.add(new Pictorica(i, "Obra" + 1, "Autor + 1", i, i, i, i, "Descripción" + 1, "Tecnica"+1, "JWD"));
+            for(int i=0; i<10; i++){
+                if(i%2 ==0){
+                    lista.add(new Pictorica(i+1, "Obra"+ i, "Autor" + i, 33+i, 44, 55, 5, "Descripción" + i, "Pictórica", "JWD", "a"+i));
+                } else {
+                    lista.add(new Escultura(i+1, "Obra"+ i, "Autor" + i, 33+i, 44, 55, 5, "Descripción" + i, "Escultura", "JWD", "b"+i));
+                }
             }
         }
+
+            
         return lista;
     }
 
