@@ -11,7 +11,6 @@ import es.tiernoparla.dam.galeria.view.IVistas;
 import es.tiernoparla.dam.galeria.view.MenuController;
 import es.tiernoparla.dam.galeria.view.ViewController;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
