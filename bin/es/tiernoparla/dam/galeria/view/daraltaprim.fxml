@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../img/elegant_watercolor_background.jpg" />
+            <Image url="@../../../../../../img/elegant_watercolor_background.jpg" />
          </image>
       </ImageView>
       <Button fx:id="btnPintura" layoutX="132.0" layoutY="258.0" mnemonicParsing="false" onMouseClicked="#switchToSecondary" prefHeight="42.0" prefWidth="252.0" text="Pintura" AnchorPane.leftAnchor="132.0">
@@ -19,7 +19,7 @@
             <Font name="Calibri" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btnCancelar" layoutX="36.0" layoutY="511.0" mnemonicParsing="false" onMouseClicked="#switchToSecondary" prefHeight="42.0" prefWidth="192.0" text="Cancelar">
+      <Button fx:id="btnCancelar" layoutX="36.0" layoutY="511.0" mnemonicParsing="false" onMouseClicked="#irMenu" prefHeight="42.0" prefWidth="192.0" text="Cancelar">
          <font>
             <Font name="Calibri" size="16.0" />
          </font>

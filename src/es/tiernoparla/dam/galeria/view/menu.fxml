@@ -21,42 +21,42 @@
                   <Image url="@../../../../../../img/logo-transparente-verde.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnAlta" layoutX="354.0" layoutY="280.0" mnemonicParsing="false" onMouseClicked="#switchToSecondary" prefHeight="42.0" prefWidth="192.0" text="Dar de alta">
+            <Button fx:id="btnAlta" layoutX="354.0" layoutY="280.0" mnemonicParsing="false" onMouseClicked="#irDarAlta" prefHeight="42.0" prefWidth="192.0" text="Dar de alta">
                <font>
                   <Font name="Calibri" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnModificar" layoutX="132.0" layoutY="301.0" mnemonicParsing="false" onMouseClicked="#switchToSecondary" prefHeight="42.0" prefWidth="192.0" text="Modificar">
+            <Button fx:id="btnModificar" layoutX="132.0" layoutY="301.0" mnemonicParsing="false" onMouseClicked="#irModificar" prefHeight="42.0" prefWidth="192.0" text="Modificar">
                <font>
                   <Font name="Calibri" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnVisualizar" layoutX="576.0" layoutY="301.0" mnemonicParsing="false" onMouseClicked="#switchToSecondary" prefHeight="42.0" prefWidth="192.0" text="Visualizar">
+            <Button fx:id="btnVisualizar" layoutX="576.0" layoutY="301.0" mnemonicParsing="false" onMouseClicked="#irVisualizar" prefHeight="42.0" prefWidth="192.0" text="Visualizar">
                <font>
                   <Font name="Calibri" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnPrecio" layoutX="354.0" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#switchToSecondary" prefHeight="42.0" prefWidth="192.0" text="Obtener precio">
+            <Button fx:id="btnPrecio" layoutX="354.0" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#irObtenerPrecio" prefHeight="42.0" prefWidth="192.0" text="Obtener precio">
                <font>
                   <Font name="Calibri" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnExportar" layoutX="132.0" layoutY="364.0" mnemonicParsing="false" onMouseClicked="#switchToSecondary" prefHeight="42.0" prefWidth="192.0" text="Exportar a fichero">
+            <Button fx:id="btnExportar" layoutX="132.0" layoutY="364.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="192.0" text="Exportar a fichero">
                <font>
                   <Font name="Calibri" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnEtiqueta" layoutX="576.0" layoutY="364.0" mnemonicParsing="false" onMouseClicked="#switchToSecondary" prefHeight="42.0" prefWidth="192.0" text="Imprimir etiqueta">
+            <Button fx:id="btnEtiqueta" layoutX="576.0" layoutY="364.0" mnemonicParsing="false" onMouseClicked="#irImprimir" prefHeight="42.0" prefWidth="192.0" text="Imprimir etiqueta">
                <font>
                   <Font name="Calibri" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnExposicion" layoutX="324.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#switchToSecondary" prefHeight="42.0" prefWidth="252.0" text="Ver exposición">
+            <Button fx:id="btnExposicion" layoutX="324.0" layoutY="430.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="252.0" text="Ver exposición">
                <font>
                   <Font name="Calibri" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnImportar" layoutX="672.0" layoutY="511.0" mnemonicParsing="false" onMouseClicked="#switchToSecondary" prefHeight="42.0" prefWidth="192.0" text="Importar fichero">
+            <Button fx:id="btnImportar" layoutX="672.0" layoutY="511.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="192.0" text="Importar fichero">
                <font>
                   <Font name="Calibri" size="16.0" />
                </font>

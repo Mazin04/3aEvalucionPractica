@@ -7,33 +7,22 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
-public class DarAltaPrimController extends ViewController{
+public class DaraltasegController extends ViewController{
 
     @FXML
-    private Button btnExposicion;
+    private Button btnCancelar;
 
     @FXML
-    private Button btnExposicion1;
-
-    @FXML
-    private Button btnSalia;
+    private Button btnConfirmar;
 
     @FXML
     private AnchorPane pantallamenu;
 
-    @FXML
-    void switchToSecondary(MouseEvent event) {
-
-    }
-
-    @FXML
-    void irMenu(MouseEvent event) throws Exception {
-        galeriaController.cargarVista(IVistas.VIEW_MENU);
-    }
 
     @Override
     public void init(List<Obra> lista) {
-        
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'init'");
     }
 
 }

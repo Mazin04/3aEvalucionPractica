@@ -38,8 +38,28 @@ public class MenuController extends ViewController{
     private AnchorPane pantallamenu;
 
     @FXML
-    void switchToSecondary(MouseEvent event) {
+    void irDarAlta(MouseEvent event) throws Exception {
+        galeriaController.cargarVista(IVistas.VIEW_DARALTAUNO);
+    }
 
+    @FXML
+    void irImprimir(MouseEvent event) throws Exception {
+        galeriaController.cargarVista(null);
+    }
+
+    @FXML
+    void irModificar(MouseEvent event) throws Exception {
+        galeriaController.cargarVista(IVistas.VIEW_MODIFICAR);
+    }
+
+    @FXML
+    void irObtenerPrecio(MouseEvent event) throws Exception {
+        galeriaController.cargarVista(IVistas.VIEW_PRECIO);
+    }
+
+    @FXML
+    void irVisualizar(MouseEvent event) throws Exception {
+        galeriaController.cargarVista(IVistas.VIEW_VISUALIZAR);
     }
 
     @Override

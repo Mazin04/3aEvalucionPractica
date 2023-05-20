@@ -1,30 +1,43 @@
 package es.tiernoparla.dam.galeria.view;
+
+
 import java.util.List;
 
 import es.tiernoparla.dam.galeria.model.Obra;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
-public class DarAltaPrimController extends ViewController{
+public class VisualizarController extends ViewController {
 
     @FXML
-    private Button btnExposicion;
+    private Button btnConfirmar;
 
     @FXML
-    private Button btnExposicion1;
+    private AnchorPane pantallavisualizar;
 
     @FXML
-    private Button btnSalia;
+    private TextField txfAltura;
 
     @FXML
-    private AnchorPane pantallamenu;
+    private TextField txfAutor;
 
     @FXML
-    void switchToSecondary(MouseEvent event) {
+    private TextField txfDesc;
 
-    }
+    @FXML
+    private TextField txfNombre;
+
+    @FXML
+    private TextField txfPeso;
+
+    @FXML
+    private TextField txfPiezas;
+
+    @FXML
+    private TextField txfPrecio;
 
     @FXML
     void irMenu(MouseEvent event) throws Exception {
@@ -35,5 +48,4 @@ public class DarAltaPrimController extends ViewController{
     public void init(List<Obra> lista) {
         
     }
-
 }
