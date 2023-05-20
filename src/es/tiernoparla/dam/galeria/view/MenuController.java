@@ -44,7 +44,6 @@ public class MenuController extends ViewController{
 
     @Override
     public void init(List<Obra> list) {
-        System.out.println("Hola");
     }
 
 }
