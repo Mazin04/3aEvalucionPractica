@@ -1,0 +1,24 @@
+@startuml Modelo arquitectónico alto nivel
+
+top to bottom direction
+
+component Vista << JavaFx >>
+component Modelo <<BBDD>>
+component Controlador
+
+
+() "IGaleria" as IGA
+() "BBDDDAO" as BDDAO
+() "FicheroDAO" as FDAO
+
+Vista ..> IGA : use
+
+Controlador -- IGA
+Controlador ..> FDAO : use
+Controlador ..> BDDAO : use
+
+Modelo -- BDDAO : use
+Modelo -- FDAO : use
+
+
+@enduml

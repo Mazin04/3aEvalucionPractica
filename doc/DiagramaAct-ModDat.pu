@@ -1,0 +1,14 @@
+@startuml Caso: modificar datos
+start
+
+:Ver tabla;
+:Seleccionar elemento;
+:Modificar valores;
+if ( "Obra ya existe" ) then
+  :Alerta de error;
+else
+  :Guardar valores;
+endif
+
+stop
+@enduml

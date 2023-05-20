@@ -1,0 +1,24 @@
+@startuml Casos de Uso
+
+left to right direction
+actor galerista as g
+rectangle Galería {
+    usecase "Dar de alta" as UC1
+    usecase "Visualizar exposición" as UC2
+    usecase "Imprimir" as UC3
+    usecase "Obtener precio" as UC4
+    usecase "Modificar datos" as UC5
+    usecase "Visualizar una obra" as UC6
+    usecase "Exportar a fichero" as UC7
+    usecase "Importar de fichero" as UC8
+}
+g -> UC1
+g --> UC2
+g -> UC3
+g -> UC4
+g -> UC5
+g -> UC6
+g -> UC7
+g -> UC8
+
+@enduml
