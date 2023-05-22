@@ -89,8 +89,8 @@ public abstract class Obra {
         return nombre;
     }
 
-    public void setNombre(String nombreNuevo) {
-        this.nombre = nombreNuevo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getAutor() {

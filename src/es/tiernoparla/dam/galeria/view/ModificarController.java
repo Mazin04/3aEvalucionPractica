@@ -116,7 +116,15 @@ public class ModificarController extends ViewController{
 
     @FXML
     void calcularPrecio(MouseEvent event) {
-
+        Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
+        double precio;
+        if(obra instanceof Pictorica){
+            precio = ((Pictorica)obra).getPrecioFinal();
+            System.out.println(precio);
+        } else {
+            precio = ((Escultura)obra).getPrecioFinal();
+            System.out.println(precio);
+        }
     }
 
     @FXML
@@ -141,7 +149,6 @@ public class ModificarController extends ViewController{
                 } else {
                     modificarEscultura((Escultura)obra);
                 }
-
             }catch(NumberFormatException e){
                 mostrarAviso("Error en el campo edad", AlertType.ERROR);
             }
@@ -174,6 +181,9 @@ public class ModificarController extends ViewController{
             obra.setGaleria(obraMod.getGaleria());
             obra.setMaterial(obraMod.getMaterial());
             this.tblObras.refresh();
+
+            mostrarAviso("Se ha modificado correctamente la obra", AlertType.INFORMATION);
+
         } catch (NumberFormatException e) {
             mostrarAviso("Error en un campo numérico", AlertType.ERROR);
         }
@@ -195,12 +205,23 @@ public class ModificarController extends ViewController{
             String tecnica = txfMaterial.getText();
 
             Pictorica obraMod = new Pictorica(obra.getId(), nombre, autor, precio, altura, peso, numeroPiezas, desc, tipo, galeria, tecnica);
+            obra.setNombre(obraMod.getNombre());
+            obra.setAutor(obraMod.getAutor());
+            obra.setPrecio(obraMod.getPrecio());
+            obra.setAltura(obraMod.getAltura());
+            obra.setPeso(obraMod.getPeso());
+            obra.setNumeroPiezas(obraMod.getNumeroPiezas());
+            obra.setDescripcion(obraMod.getDescripcion());
+            obra.setTipo(obraMod.getTipo());
+            obra.setGaleria(obraMod.getGaleria());
+            obra.setTecnica(obraMod.getTecnica());
+            
             this.tblObras.refresh();
 
+            mostrarAviso("Se ha modificado correctamente la obra", AlertType.INFORMATION);
         } catch (NumberFormatException e) {
             mostrarAviso("Error en un campo numérico", AlertType.ERROR);
         }
-        
     }
 
 
