@@ -142,6 +142,8 @@ public class ModificarController extends ViewController{
         Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
         if(obra == null){
             mostrarAviso("Debe seleccionar un registro y luego modificarlo", AlertType.ERROR);
+        }else if(txfNombre.getText().isBlank() || txfAutor.getText().isBlank() || txfDesc.getText().isBlank() || txfGaleria.getText().isBlank() || txfMaterial.getText().isBlank()){
+            mostrarAviso("Se ha dejado vacío un campo/s", AlertType.ERROR);
         }else{
             try{
                 if(obra instanceof Pictorica){
@@ -191,7 +193,7 @@ public class ModificarController extends ViewController{
     }
 
 
-    private void modificarPictorica(Pictorica obra) {
+    private void modificarPictorica(Pictorica obra) {    
         try {
             String nombre = txfNombre.getText();
             String autor = txfAutor.getText();
@@ -215,7 +217,7 @@ public class ModificarController extends ViewController{
             obra.setTipo(obraMod.getTipo());
             obra.setGaleria(obraMod.getGaleria());
             obra.setTecnica(obraMod.getTecnica());
-            
+
             this.tblObras.refresh();
 
             mostrarAviso("Se ha modificado correctamente la obra", AlertType.INFORMATION);
