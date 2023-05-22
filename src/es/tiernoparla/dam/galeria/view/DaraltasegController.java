@@ -55,29 +55,33 @@ public class DaraltasegController extends ViewController{
 
     @FXML
     void confirmarAlta(MouseEvent event) throws Exception {
-        try {
-            String nombre = txfNombre.getText();
-            String autor = txfAutor.getText();
-            Double precio = Double.parseDouble(txfPrecio.getText());
-            Double altura = Double.parseDouble(txfAltura.getText());
-            Double peso = Double.parseDouble(txfPeso.getText());
-            String tecnica = txfTecnica.getText();
-            int numeroPiezas = Integer.parseInt(txfPiezas.getText());
-            String descripcion = txfDesc.getText();
-            String galeria = txfGaleria.getText();
+        if(txfNombre.getText().isBlank() || txfAutor.getText().isBlank() || txfDesc.getText().isBlank() || txfGaleria.getText().isBlank() || txfTecnica.getText().isBlank()){
+            mostrarAviso("Se ha dejado vacío un campo/s", AlertType.ERROR);
+        } else {
+            try {
+                String nombre = txfNombre.getText();
+                String autor = txfAutor.getText();
+                Double precio = Double.parseDouble(txfPrecio.getText());
+                Double altura = Double.parseDouble(txfAltura.getText());
+                Double peso = Double.parseDouble(txfPeso.getText());
+                String tecnica = txfTecnica.getText();
+                int numeroPiezas = Integer.parseInt(txfPiezas.getText());
+                String descripcion = txfDesc.getText();
+                String galeria = txfGaleria.getText();
 
-            Pictorica pintura = new Pictorica(Obra.contador+1, nombre, autor, precio, altura, peso, numeroPiezas, descripcion, "Pictórica", galeria, tecnica);
+                Pictorica pintura = new Pictorica(Obra.contador, nombre, autor, precio, altura, peso, numeroPiezas, descripcion, "Pictórica", galeria, tecnica);
 
-            if (this.obras.contains(pintura)) {
-                mostrarAviso("La obra ya ha sido insertada anteriormente", AlertType.ERROR);
-            } else {
-                galeriaController.add(pintura);
-                this.obras.add(pintura);
-                mostrarAviso("La obra ha sido insertada correctamente", AlertType.INFORMATION);
-                galeriaController.cargarVista(IVistas.VIEW_MENU);
+                if (this.obras.contains(pintura)) {
+                    mostrarAviso("La obra ya ha sido insertada anteriormente", AlertType.ERROR);
+                } else {
+                    galeriaController.add(pintura);
+                    this.obras.add(pintura);
+                    mostrarAviso("La obra ha sido insertada correctamente", AlertType.INFORMATION);
+                    galeriaController.cargarVista(IVistas.VIEW_MENU);
+                }
+            } catch (NumberFormatException e) {
+                mostrarAviso("Error en un campo numérico", AlertType.ERROR);
             }
-        } catch (NumberFormatException e) {
-            mostrarAviso("Error en un campo numérico", AlertType.ERROR);
         }
     }
 
