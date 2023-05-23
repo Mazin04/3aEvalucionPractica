@@ -25,7 +25,7 @@ public class GaleriaController extends Application{
     private static Stage currentStage;
 
     public GaleriaController() throws SQLException{
-        dao = DAOFactory.getDao(DAOFactory.MODO_TEST);
+        dao = DAOFactory.getDao(DAOFactory.MODO_SQLITE);
     }
 
     @Override
@@ -60,6 +60,8 @@ public class GaleriaController extends Application{
         currentStage.close();
 
         currentStage.setScene(scene);
+        currentStage.resizableProperty().setValue(false);
+
         currentStage.show();
         viewController.init(obtenerAlumnos());
 
