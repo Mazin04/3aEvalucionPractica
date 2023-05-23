@@ -71,16 +71,12 @@ public class DaraltasegController extends ViewController{
 
                 Pictorica pintura = new Pictorica(Obra.contador, nombre, autor, precio, altura, peso, numeroPiezas, descripcion, "Pictórica", galeria, tecnica);
 
-                if (this.obras.contains(pintura)) {
-                    mostrarAviso("La obra ya ha sido insertada anteriormente", AlertType.ERROR);
-                } else {
-                    galeriaController.add(pintura);
-                    this.obras.add(pintura);
-                    mostrarAviso("La obra ha sido insertada correctamente", AlertType.INFORMATION);
-                    galeriaController.cargarVista(IVistas.VIEW_MENU);
-                }
+                galeriaController.add(pintura);
+                this.obras.add(pintura);
+                mostrarAviso("La obra ha sido insertada correctamente", AlertType.INFORMATION);
+                galeriaController.cargarVista(IVistas.VIEW_MENU);
             } catch (NumberFormatException e) {
-                mostrarAviso("Error en un campo numérico", AlertType.ERROR);
+                mostrarAviso("Error en un campo numérico", AlertType.ERROR);    
             }
         }
     }

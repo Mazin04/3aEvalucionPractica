@@ -76,14 +76,10 @@ public class DaraltaterceController extends ViewController{
             
                 Escultura escultura = new Escultura(Obra.contador, nombre, autor, precio, altura, peso, numeroPiezas, descripcion, "Escultura", galeria, material);
             
-                if (this.obras.contains(escultura)) {
-                    mostrarAviso("La obra ya ha sido insertada anteriormente", AlertType.ERROR);
-                } else {
-                    galeriaController.add(escultura);
-                    this.obras.add(escultura);
-                    mostrarAviso("La obra ha sido insertada correctamente", AlertType.INFORMATION);
-                    galeriaController.cargarVista(IVistas.VIEW_MENU);
-                }
+                galeriaController.add(escultura);
+                this.obras.add(escultura);
+                mostrarAviso("La obra ha sido insertada correctamente", AlertType.INFORMATION);
+                galeriaController.cargarVista(IVistas.VIEW_MENU);
             } catch (NumberFormatException e) {
                 mostrarAviso("Error en un campo numérico", AlertType.ERROR);
             }

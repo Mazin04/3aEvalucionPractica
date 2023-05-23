@@ -2,11 +2,12 @@ package es.tiernoparla.dam.galeria.controller;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import es.tiernoparla.dam.galeria.App;
 import es.tiernoparla.dam.galeria.model.DAOFactory;
+import es.tiernoparla.dam.galeria.model.Escultura;
 import es.tiernoparla.dam.galeria.model.GaleriaDAO;
 import es.tiernoparla.dam.galeria.model.Obra;
+import es.tiernoparla.dam.galeria.model.Pictorica;
 import es.tiernoparla.dam.galeria.view.IVistas;
 import es.tiernoparla.dam.galeria.view.MenuController;
 import es.tiernoparla.dam.galeria.view.ViewController;
@@ -17,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class GaleriaController extends Application{
@@ -61,14 +63,19 @@ public class GaleriaController extends Application{
 
         currentStage.setScene(scene);
         currentStage.resizableProperty().setValue(false);
-
+        currentStage.getIcons().add(new Image("file:img/logo-transparente-verde.png"));
+        currentStage.setTitle("Galeria JDWS");
         currentStage.show();
         viewController.init(obtenerAlumnos());
-
         return viewController;
     }
 
-    public List<Obra> add(Obra obra) throws Exception{
+    public List<Obra> add(Pictorica obra) throws Exception{
+        dao.add(obra);
+        return dao.obtenerObras();
+    }
+
+    public List<Obra> add(Escultura obra) throws Exception{
         dao.add(obra);
         return dao.obtenerObras();
     }
