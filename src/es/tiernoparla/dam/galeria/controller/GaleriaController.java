@@ -80,9 +80,18 @@ public class GaleriaController extends Application{
         return dao.obtenerObras();
     }
 
+    public List<Obra> modify(Escultura obra) throws Exception{
+        dao.modify(obra);
+        return dao.obtenerObras();
+    }
+
+    public List<Obra> modify(Pictorica obra) throws Exception{
+        dao.modify(obra);
+        return dao.obtenerObras();
+    }
 
     public List<Obra> obtenerAlumnos() throws Exception{
-        return dao.obtenerObras();
+            return dao.obtenerObras();
     }
 
 }

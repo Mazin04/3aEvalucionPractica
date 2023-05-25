@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -31,83 +30,83 @@
             <Font name="Calibri" size="40.0" />
          </font>
       </Text>
-      <Label layoutX="840.0" layoutY="245.0" text="Nombre:" AnchorPane.rightAnchor="380.0">
+      <Label layoutX="838.0" layoutY="266.0" text="Nombre:" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="858.0" layoutY="275.0" text="Autor:" AnchorPane.rightAnchor="380.0">
+      <Label layoutX="856.0" layoutY="296.0" text="Autor:" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="831.0" layoutY="306.0" text="Precio (€):" AnchorPane.rightAnchor="380.0">
+      <Label layoutX="829.0" layoutY="327.0" text="Precio (€):" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="791.0" layoutY="336.0" text="Altura (metros):" AnchorPane.rightAnchor="380.0">
+      <Label layoutX="789.0" layoutY="357.0" text="Altura (metros):" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="780.0" layoutY="368.0" text="Peso (toneladas):" AnchorPane.rightAnchor="380.0">
+      <Label layoutX="780.0" layoutY="389.0" text="Peso (toneladas):" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="772.0" layoutY="436.0" text="Material / Técnica:" AnchorPane.rightAnchor="380.0">
+      <Label layoutX="770.0" layoutY="423.0" text="Material / Técnica:" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="772.0" layoutY="466.0" text="Número de piezas:" AnchorPane.rightAnchor="380.0">
+      <Label layoutX="770.0" layoutY="453.0" text="Número de piezas:" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="816.0" layoutY="496.0" text="Descripción:" AnchorPane.rightAnchor="380.0">
+      <Label layoutX="814.0" layoutY="483.0" text="Descripción:" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="848.0" layoutY="526.0" text="Galería:" AnchorPane.rightAnchor="380.0">
+      <Label layoutX="846.0" layoutY="513.0" text="Galería:" AnchorPane.rightAnchor="380.0">
          <font>
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="txfAutor" layoutX="918.0" layoutY="273.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
+      <TextField fx:id="txfAutor" layoutX="918.0" layoutY="294.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <TextField fx:id="txfPrecio" layoutX="918.0" layoutY="304.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
+      <TextField fx:id="txfPrecio" layoutX="918.0" layoutY="325.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <TextField fx:id="txfAltura" layoutX="918.0" layoutY="334.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
+      <TextField fx:id="txfAltura" layoutX="918.0" layoutY="355.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <TextField fx:id="txfPeso" layoutX="918.0" layoutY="366.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0" />
-      <TextField fx:id="txfMaterial" layoutX="918.0" layoutY="434.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
+      <TextField fx:id="txfPeso" layoutX="918.0" layoutY="387.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0" />
+      <TextField fx:id="txfMaterial" layoutX="918.0" layoutY="421.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <TextField fx:id="txfPiezas" layoutX="918.0" layoutY="464.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
+      <TextField fx:id="txfPiezas" layoutX="918.0" layoutY="451.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <TextField fx:id="txfDesc" layoutX="918.0" layoutY="494.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
+      <TextField fx:id="txfDesc" layoutX="918.0" layoutY="481.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <TextField fx:id="txfGaleria" layoutX="918.0" layoutY="524.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
+      <TextField fx:id="txfGaleria" layoutX="918.0" layoutY="511.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>
@@ -122,16 +121,10 @@
             <TableColumn fx:id="colGaleria" prefWidth="116.0" text="Galeria" />
         </columns>
       </TableView>
-      <TextField fx:id="txfNombre" layoutX="918.0" layoutY="243.0" prefHeight="25.0" prefWidth="580.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
+      <TextField fx:id="txfNombre" layoutX="918.0" layoutY="264.0" prefHeight="25.0" prefWidth="580.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding></TextField>
-      <Label layoutX="867.0" layoutY="401.0" text="Tipo:" AnchorPane.rightAnchor="380.0">
-         <font>
-            <Font name="Calibri" size="17.0" />
-         </font>
-      </Label>
-      <ChoiceBox fx:id="chbTipo" layoutX="918.0" layoutY="399.0" prefHeight="25.0" prefWidth="280.0" />
       <ButtonBar layoutX="404.0" layoutY="697.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="46.0" prefWidth="794.0">
          <buttons>
             <Button fx:id="btnModificar" mnemonicParsing="false" onMouseClicked="#modificar" prefHeight="42.0" prefWidth="192.0" text="Modificar Obra">

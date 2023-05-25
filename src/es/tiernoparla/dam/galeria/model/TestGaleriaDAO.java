@@ -30,5 +30,13 @@ public class TestGaleriaDAO implements GaleriaDAO {
     public void add(Escultura obra) throws Exception {
         lista.add(obra);
     }
+
+    @Override
+    public void modify(Pictorica obra) throws Exception {
+    }
+
+    @Override
+    public void modify(Escultura obra) throws Exception {
+    }
     
 }
