@@ -4,8 +4,10 @@ import java.sql.SQLException;
 import java.util.List;
 import es.tiernoparla.dam.galeria.App;
 import es.tiernoparla.dam.galeria.model.DAOFactory;
+import es.tiernoparla.dam.galeria.model.Escultura;
 import es.tiernoparla.dam.galeria.model.GaleriaDAO;
 import es.tiernoparla.dam.galeria.model.Obra;
+import es.tiernoparla.dam.galeria.model.Pictorica;
 import es.tiernoparla.dam.galeria.view.IVistas;
 import es.tiernoparla.dam.galeria.view.MenuController;
 import es.tiernoparla.dam.galeria.view.ViewController;
@@ -68,7 +70,12 @@ public class GaleriaController extends Application{
         return viewController;
     }
 
-    public List<Obra> add(Obra obra) throws Exception{
+    public List<Obra> add(Pictorica obra) throws Exception{
+        dao.add(obra);
+        return dao.obtenerObras();
+    }
+
+    public List<Obra> add(Escultura obra) throws Exception{
         dao.add(obra);
         return dao.obtenerObras();
     }

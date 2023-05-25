@@ -22,7 +22,12 @@ public class TestGaleriaDAO implements GaleriaDAO {
     }
 
     @Override
-    public void add(Obra obra) throws Exception {
+    public void add(Pictorica obra) throws Exception {
+        lista.add(obra);
+    }
+    
+    @Override
+    public void add(Escultura obra) throws Exception {
         lista.add(obra);
     }
     
