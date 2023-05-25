@@ -89,6 +89,7 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         conn.setAutoCommit(false);
         psEsc.executeBatch();
         conn.setAutoCommit(true);
+        conn.commit();
         psEsc.close();
     }
 
@@ -100,6 +101,7 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         conn.setAutoCommit(false);
         psPic.executeBatch();
         conn.setAutoCommit(true);
+        conn.commit();
         psPic.close();
     }
 }
