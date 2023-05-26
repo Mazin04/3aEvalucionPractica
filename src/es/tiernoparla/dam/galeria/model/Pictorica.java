@@ -10,13 +10,17 @@ public class Pictorica extends Obra {
         this.tecnica = tecnica;
     }
 
-    @Override
-    public double getPrecioFinal(){
-        final double DESCUENTOPIC = super.getPrecioFinal() * 0.1;
+    public double getPrecioFinalPic(){
+        double DESCUENTOPIC = getDescuento();
         double precioFinalsinMod = 0;
         precioFinalsinMod = super.getPrecioFinal();
         double precioFinalMod = precioFinalsinMod - DESCUENTOPIC; 
         return precioFinalMod;
+    }
+
+    public double getDescuento() {
+        double DESCUENTOPIC = super.getPrecioFinal() * 0.1;
+        return DESCUENTOPIC;
     }
 
     public String getTecnica() {

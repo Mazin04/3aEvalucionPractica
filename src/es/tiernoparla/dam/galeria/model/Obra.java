@@ -54,35 +54,66 @@ public abstract class Obra {
     }
 
     public double getPrecioFinal(){
+
+        double precioComision = obtenerComision();
+
+        double precioPeso = obtenerPeso();
+
+        double precioAltura = obtenerAltura();
+
+        double precioPiezas = obtenerPiezas();
+
+        double precioFinal = this.getPrecio() + precioComision + precioPeso + precioAltura + precioPiezas;
+        return precioFinal;
+    }
+
+    public double obtenerComision() {
         final double INCREMENTO = 0.25;
-        final int PESOMINIMO = 1;
-        final int ALTURAMINIMA = 2;
+        double precioComision = this.getPrecio()*INCREMENTO; //Comision Galeria
+        return precioComision;
+    }
+
+    public double obtenerPiezas() {
         final int FORPRECIO = 2;
         final int PRECIOADICIONAL = 10;
         final int PIEZAMINIMA = 2;
-        double precioPeso = 0;
-        double precioAltura = 0;
         double precioPiezas = 0;
-        double precioComision = this.getPrecio()*INCREMENTO; //Comision Galeria
-
-        if(this.getPeso() > PESOMINIMO){ //Precio por peso
-            precioPeso = 100;
-        } else {
-            precioPeso = 20;
+        for (int i = FORPRECIO; i<=this.getNumeroPiezas(); i++){ //Coste de 10€ por pieza adicional, a partir de 2 piezas
+            precioPiezas = PRECIOADICIONAL * (this.getNumeroPiezas() - PIEZAMINIMA);
         }
+        return precioPiezas;
+    }
 
+    public String obtenerMsgPiezas(){
+        String msg ="";
+        if(this.getNumeroPiezas() > 2){
+            for (int i = 3; i <= (this.getNumeroPiezas()); i++) {
+                msg += "\nImporte adicional - Pieza " + i + " (€): 10";
+            }
+        }
+        return msg;
+    }
+
+    public double obtenerAltura() {
+        final int ALTURAMINIMA = 2;
+        double precioAltura;
         if(this.getAltura() > ALTURAMINIMA){ //Precio por altura
             precioAltura = 100 * this.getNumeroPiezas();
         } else {
             precioAltura = 20;
         }
+        return precioAltura;
+    }
 
-        for (int i = FORPRECIO; i<=this.getNumeroPiezas(); i++){ //Coste de 10€ por pieza adicional, a partir de 2 piezas
-            precioPiezas = PRECIOADICIONAL * (this.getNumeroPiezas() - PIEZAMINIMA);
+    public double obtenerPeso() {
+        final int PESOMINIMO = 1;
+        double precioPeso;
+        if(this.getPeso() > PESOMINIMO){ //Precio por peso
+            precioPeso = 100;
+        } else {
+            precioPeso = 20;
         }
-
-        double precioFinal = this.getPrecio() + precioComision + precioPeso + precioAltura + precioPiezas;
-        return precioFinal;
+        return precioPeso;
     }
 
     public String getNombre() {

@@ -113,15 +113,14 @@ public class ModificarController extends ViewController{
     @FXML
     void calcularPrecio(MouseEvent event) {
         Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
-        double precio;
-        if(obra instanceof Pictorica){
-            precio = ((Pictorica)obra).getPrecioFinal();
-            System.out.println(precio);
+        if(obra.getTipo().equals("Pictórica")){
+            mostrarAviso("Nombre: " + obra.getNombre() + "\nAltura (m): "+ obra.getAltura() + "\nPeso: " + obra.getPrecio() + "\nNúmero de piezas: " + obra.getNumeroPiezas() + "\nPrecio (€): " + obra.getPrecio() + "\nComisión Galería (€): " + obra.obtenerComision() + "\nImporte por peso (€): " + obra.obtenerPeso() + "\nImporte por altura (€): " + obra.obtenerAltura() + obra.obtenerMsgPiezas() + "\nPrecio de venta (€): " + obra.getPrecioFinal() + "\nDescuento (10% Óleo €): " + ((Pictorica)obra).getDescuento() + "\nPrecio final de venta (€): " + String.valueOf(((Pictorica)obra).getPrecioFinalPic()), AlertType.INFORMATION);
         } else {
-            precio = ((Escultura)obra).getPrecioFinal();
-            System.out.println(precio);
+            mostrarAviso("Nombre: " + obra.getNombre() + "\nAltura (m): "+ obra.getAltura() + "\nPeso: " + obra.getPrecio() + "\nNúmero de piezas: " + obra.getNumeroPiezas() + "\nPrecio (€): " + obra.getPrecio() + "\nComisión Galería (€): " + obra.obtenerComision() + "\nImporte por peso (€): " + obra.obtenerPeso() + "\nImporte por altura (€): " + obra.obtenerAltura() + obra.obtenerMsgPiezas() + "\nPrecio de venta (€): " + obra.getPrecioFinal() + "\nDescuento (20% Escultura €): " + ((Escultura)obra).getDescuento() + "\nPrecio por sobrecoste (€): " + ((Escultura)obra).getSOBRECOSTE() + "\nPrecio final de venta (€): " + String.valueOf(((Escultura)obra).getPrecioFinalEsc()), AlertType.INFORMATION);
+
         }
     }
+
 
     @FXML
     void imprimir(MouseEvent event) {
@@ -209,7 +208,7 @@ public class ModificarController extends ViewController{
             obra.setDescripcion(obraMod.getDescripcion());
             obra.setGaleria(obraMod.getGaleria());
             obra.setTecnica(obraMod.getTecnica());
-            
+
             galeriaController.modify(obra);
             this.tblObras.refresh(); 
             mostrarAviso("Se ha modificado correctamente la obra", AlertType.INFORMATION);
@@ -226,8 +225,6 @@ public class ModificarController extends ViewController{
 
     @FXML
     void seleccionarObra(MouseEvent event) {    
-
-        // Devuelve el alumno seleccionado
         Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
 
         if(obra == null){
