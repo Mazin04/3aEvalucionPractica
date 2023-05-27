@@ -124,7 +124,6 @@ public class ModificarController extends ViewController{
         }
     } 
 
-
     @FXML
     void imprimir(MouseEvent event) {
         Obra obra = this.tblObras.getSelectionModel().getSelectedItem();

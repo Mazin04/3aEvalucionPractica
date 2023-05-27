@@ -1,5 +1,6 @@
 package es.tiernoparla.dam.galeria.model;
 
+import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class SQLiteGaleriaDAO implements GaleriaDAO{
     private static final String URL = "jdbc:sqlite:galeria.db";
@@ -89,12 +91,7 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
 
     @Override
     public void add(Escultura obra) throws Exception {
-        final String sqlAutor = "SELECT ID_AUTOR FROM AUTOR WHERE N_AUTOR = ?";
-        PreparedStatement psA = conn.prepareStatement(sqlAutor);
-        psA.setString(1, obra.getAutor());
-        ResultSet rsA = psA.executeQuery();
-        int idAutor = rsA.getInt("ID_AUTOR");
-        rsA.close();
+        int idAutor = obtenerIDAut(obra);
 
         final String sqlID = "SELECT MAX(ID_OBRA) FROM OBRA";
         PreparedStatement psID = conn.prepareStatement(sqlID);
@@ -121,15 +118,68 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         psEsc.setInt(1, idObra);
         psEsc.setString(2, obra.getMaterial());
 
+        ps.addBatch();
         conn.setAutoCommit(false);
-        ps.executeUpdate();
+        ps.executeBatch();
         conn.setAutoCommit(true);
         ps.close();
 
+        psEsc.addBatch();
         conn.setAutoCommit(false);
-        psEsc.executeUpdate();
+        psEsc.executeBatch();
         conn.setAutoCommit(true);
         psEsc.close();
+    }
+
+    private int obtenerIDAut(Escultura obra) throws SQLException {
+
+        //Obtener el id del autor que coincida con el nombre introducido
+        final String sqlIDAutor = "SELECT ID_AUTOR FROM AUTOR WHERE N_AUTOR = ?";
+        PreparedStatement psA = conn.prepareStatement(sqlIDAutor);
+        psA.setString(1, obra.getAutor());
+        ResultSet rsA = psA.executeQuery();
+        int idAutor;
+
+        //Si no retorna nada, genera un nuevo autor
+        if(rsA.getInt("ID_AUTOR") == 0){
+            final String sqlID = "SELECT MAX(ID_AUTOR) FROM AUTOR";
+            PreparedStatement psID = conn.prepareStatement(sqlID);
+            ResultSet rsID = psID.executeQuery();
+            idAutor = rsID.getInt("MAX(ID_AUTOR)") + 1;
+            rsID.close();
+
+            crearAutor(obra, idAutor);
+            return idAutor;
+        } else {
+            idAutor = rsA.getInt("ID_AUTOR");
+            rsA.close();
+            return idAutor;
+        }
+    }
+
+    private void crearAutor(Escultura obra, int idAutor) throws SQLException {
+        //Estilo aleatorio
+        byte[] array = new byte[7];
+        new Random().nextBytes(array);
+        String estilo = new String(array, Charset.forName("UTF-8"));
+
+        //Fecha nacimiento aleatoria
+        Random randomAno = new Random();
+        int anoNac = randomAno.nextInt(2023);
+        anoNac = anoNac+1;
+
+        final String sqlNAut = "INSERT INTO AUTOR VALUES (?, ?, ?, ?)";
+        PreparedStatement psAut = conn.prepareStatement(sqlNAut);
+        psAut.setInt(1, idAutor);
+        psAut.setString(2, obra.getAutor());
+        psAut.setInt(3, anoNac);
+        psAut.setString(4, estilo);
+
+        psAut.addBatch();
+        conn.setAutoCommit(false);
+        psAut.executeBatch();
+        conn.setAutoCommit(true);
+        psAut.close();
     }
 
     @Override
