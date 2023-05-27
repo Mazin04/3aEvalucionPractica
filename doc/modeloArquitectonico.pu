@@ -1,24 +1,20 @@
-@startuml Modelo arquitectónico alto nivel
+@startuml arquitectura
 
 top to bottom direction
 
 component Vista << JavaFx >>
-component Modelo <<BBDD>>
-component Controlador
+component Controlador << Java >>
+component Modelo << SQLite y XML >>
 
+() "GaleriaController" as GC
+() "BBDD Data Access" as BD
+() "XML Data Access" as XM
 
-() "IGaleria" as IGA
-() "BBDDDAO" as BDDAO
-() "FicheroDAO" as FDAO
-
-Vista ..> IGA : use
-
-Controlador -- IGA
-Controlador ..> FDAO : use
-Controlador ..> BDDAO : use
-
-Modelo -- BDDAO : use
-Modelo -- FDAO : use
-
+Vista ..> GC: use
+Controlador -- GC
+Modelo -- BD
+Modelo -- XM
+Controlador ..> BD: use
+Controlador ..> XM: use
 
 @enduml

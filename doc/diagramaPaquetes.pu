@@ -1,0 +1,49 @@
+@startuml Paquetes
+
+top to bottom direction
+
+package es/tiernoparla/dam/galeria/view{
+    component vistas <<FXML>>
+    component VistasControladores <<java>>
+    component ViewController <<java>>
+
+    () IVistas as IV
+
+    VistasControladores ..> vistas: use
+    VistasControladores --|> ViewController
+    VistasControladores ..> IV: use
+
+}
+
+package es/tiernoparla/dam/galeria/controller{
+    component GaleriaController <<java>>
+
+    () "GaleriaController" as GC
+
+    GaleriaController --|> GC 
+
+}
+
+ViewController ..> GC: use
+
+package es/tiernoparla/dam/galeria/model{
+    component BBDD << SQLite >>
+    component Fichero << XML >>
+    component Test <<java>>
+
+    () "BBDD Data Access" as BD
+    () "XML Data Access" as XM
+    () "Test Data Access" as TD
+    () "Galeria Data Access" as GDA
+
+    BBDD --|> BD 
+    Fichero --|> XM 
+    Test --|> TD 
+    BD --|> GDA
+    XM --|> GDA
+    TD --|> GDA
+}
+
+GaleriaController ..> GDA: use 
+
+@enduml
