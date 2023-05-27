@@ -44,12 +44,7 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
 
     @Override
     public void add(Pictorica obra) throws Exception {
-        final String sqlAutor = "SELECT ID_AUTOR FROM AUTOR WHERE N_AUTOR = ?";
-        PreparedStatement psA = conn.prepareStatement(sqlAutor);
-        psA.setString(1, obra.getAutor());
-        ResultSet rsA = psA.executeQuery();
-        int idAutor = rsA.getInt("ID_AUTOR");
-        rsA.close();
+        int idAutor = obtenerIDAut(obra);
 
         final String sqlID = "SELECT MAX(ID_OBRA) FROM OBRA";
         PreparedStatement psID = conn.prepareStatement(sqlID);
@@ -131,7 +126,7 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         psEsc.close();
     }
 
-    private int obtenerIDAut(Escultura obra) throws SQLException {
+    private int obtenerIDAut(Obra obra) throws SQLException {
 
         //Obtener el id del autor que coincida con el nombre introducido
         final String sqlIDAutor = "SELECT ID_AUTOR FROM AUTOR WHERE N_AUTOR = ?";
@@ -148,7 +143,7 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
             idAutor = rsID.getInt("MAX(ID_AUTOR)") + 1;
             rsID.close();
 
-            crearAutor(obra, idAutor);
+            crearAutor((Obra)obra, idAutor);
             return idAutor;
         } else {
             idAutor = rsA.getInt("ID_AUTOR");
@@ -157,7 +152,7 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         }
     }
 
-    private void crearAutor(Escultura obra, int idAutor) throws SQLException {
+    private void crearAutor(Obra obra, int idAutor) throws SQLException {
         //Estilo aleatorio
         byte[] array = new byte[7];
         new Random().nextBytes(array);
