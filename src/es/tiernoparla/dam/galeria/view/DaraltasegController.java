@@ -10,8 +10,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class DaraltasegController extends ViewController{
 
@@ -96,6 +99,9 @@ public class DaraltasegController extends ViewController{
         alerta.setHeaderText(null);
         alerta.setTitle("Importante");
         alerta.setContentText(msg);
+        alerta.setGraphic(new ImageView("file:img/photo.png"));
+        Stage stage = (Stage)alerta.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("file:img/logo-transparente-verde.png"));
         alerta.showAndWait();
     }
 }

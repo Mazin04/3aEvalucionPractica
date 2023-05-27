@@ -116,6 +116,10 @@ public abstract class Obra {
         return precioPeso;
     }
 
+    public String imprimirPrecio(){
+        return "Nombre: " + this.getNombre() + "\nAltura (m): "+ this.getAltura() + "\nPeso: " + this.getPrecio() + "\nNúmero de piezas: " + this.getNumeroPiezas() + "\nPrecio (€): " + this.getPrecio() + "\nComisión Galería (€): " + this.obtenerComision() + "\nImporte por peso (€): " + this.obtenerPeso() + "\nImporte por altura (€): " + this.obtenerAltura() + this.obtenerMsgPiezas() + "\nPrecio de venta (€): " + this.getPrecioFinal();
+    }
+
     public String getNombre() {
         return nombre;
     }
