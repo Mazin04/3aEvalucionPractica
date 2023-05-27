@@ -23,6 +23,10 @@ public class Escultura extends Obra {
         return precioFinalMod;
     }
 
+    public String imprimirPrecioEsc() {
+        return "\nDescuento (20% Escultura €): " + this.getDescuento() + "\nPrecio por sobrecoste (€): " + this.getSOBRECOSTE() + "\nPrecio final de venta (€): " + String.valueOf(this.getPrecioFinalEsc());
+    }
+
     public double getDescuento() {
         final double DESCUENTOESC = super.getPrecioFinal() * 0.2;
         return DESCUENTOESC;

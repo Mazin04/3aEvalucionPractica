@@ -10,8 +10,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class DaraltaterceController extends ViewController{
 
@@ -90,12 +93,15 @@ public class DaraltaterceController extends ViewController{
     void irMenu(MouseEvent event) throws Exception {
         galeriaController.cargarVista(IVistas.VIEW_MENU);
     }
-
+    
     private void mostrarAviso(String msg, AlertType tipo){
         Alert alerta = new Alert(tipo);
         alerta.setHeaderText(null);
         alerta.setTitle("Importante");
         alerta.setContentText(msg);
+        alerta.setGraphic(new ImageView("file:img/photo.png"));
+        Stage stage = (Stage)alerta.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("file:img/logo-transparente-verde.png"));
         alerta.showAndWait();
     }
 

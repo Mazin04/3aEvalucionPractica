@@ -34,7 +34,7 @@ public class GaleriaController extends Application{
     public void start(Stage stage) throws Exception {
         currentStage = stage;
         MenuController viewController = (MenuController)cargarVista(IVistas.VIEW_MENU);
-        viewController.init(obtenerAlumnos());
+        viewController.init(obtenerObras());
         stage.setOnCloseRequest(event -> {
             event.consume();
             cerrar(stage);
@@ -66,7 +66,7 @@ public class GaleriaController extends Application{
         currentStage.getIcons().add(new Image("file:img/logo-transparente-verde.png"));
         currentStage.setTitle("Galeria JDWS");
         currentStage.show();
-        viewController.init(obtenerAlumnos());
+        viewController.init(obtenerObras());
         return viewController;
     }
 
@@ -90,7 +90,7 @@ public class GaleriaController extends Application{
         return dao.obtenerObras();
     }
 
-    public List<Obra> obtenerAlumnos() throws Exception{
+    public List<Obra> obtenerObras() throws Exception{
             return dao.obtenerObras();
     }
 

@@ -23,6 +23,9 @@ public class Pictorica extends Obra {
         return DESCUENTOPIC;
     }
 
+    public String imprimirPrecioPic(){
+        return "\nDescuento (10% Óleo €): " + this.getDescuento() + "\nPrecio final de venta (€): " + String.valueOf(this.getPrecioFinalPic());
+    }
     public String getTecnica() {
         return tecnica;
     }

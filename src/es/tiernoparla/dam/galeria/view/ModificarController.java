@@ -16,8 +16,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class ModificarController extends ViewController{
     @FXML
@@ -114,17 +117,17 @@ public class ModificarController extends ViewController{
     void calcularPrecio(MouseEvent event) {
         Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
         if(obra.getTipo().equals("Pictórica")){
-            mostrarAviso("Nombre: " + obra.getNombre() + "\nAltura (m): "+ obra.getAltura() + "\nPeso: " + obra.getPrecio() + "\nNúmero de piezas: " + obra.getNumeroPiezas() + "\nPrecio (€): " + obra.getPrecio() + "\nComisión Galería (€): " + obra.obtenerComision() + "\nImporte por peso (€): " + obra.obtenerPeso() + "\nImporte por altura (€): " + obra.obtenerAltura() + obra.obtenerMsgPiezas() + "\nPrecio de venta (€): " + obra.getPrecioFinal() + "\nDescuento (10% Óleo €): " + ((Pictorica)obra).getDescuento() + "\nPrecio final de venta (€): " + String.valueOf(((Pictorica)obra).getPrecioFinalPic()), AlertType.INFORMATION);
+            mostrarAviso(obra.imprimirPrecio() + ((Pictorica)obra).imprimirPrecioPic(), AlertType.INFORMATION);
         } else {
-            mostrarAviso("Nombre: " + obra.getNombre() + "\nAltura (m): "+ obra.getAltura() + "\nPeso: " + obra.getPrecio() + "\nNúmero de piezas: " + obra.getNumeroPiezas() + "\nPrecio (€): " + obra.getPrecio() + "\nComisión Galería (€): " + obra.obtenerComision() + "\nImporte por peso (€): " + obra.obtenerPeso() + "\nImporte por altura (€): " + obra.obtenerAltura() + obra.obtenerMsgPiezas() + "\nPrecio de venta (€): " + obra.getPrecioFinal() + "\nDescuento (20% Escultura €): " + ((Escultura)obra).getDescuento() + "\nPrecio por sobrecoste (€): " + ((Escultura)obra).getSOBRECOSTE() + "\nPrecio final de venta (€): " + String.valueOf(((Escultura)obra).getPrecioFinalEsc()), AlertType.INFORMATION);
+            mostrarAviso(obra.imprimirPrecio() + ((Escultura)obra).imprimirPrecioEsc(), AlertType.INFORMATION);
 
         }
-    }
-
+    } 
 
     @FXML
     void imprimir(MouseEvent event) {
-
+        Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
+        mostrarAviso(obra.imprimirEtiqueta(), AlertType.INFORMATION);
     }
 
     @FXML
@@ -220,7 +223,8 @@ public class ModificarController extends ViewController{
 
     @FXML
     void visualizar(MouseEvent event) {
-
+        Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
+        mostrarAviso(obra.toString(), AlertType.INFORMATION);
     }
 
     @FXML
@@ -271,6 +275,9 @@ public class ModificarController extends ViewController{
         alerta.setHeaderText(null);
         alerta.setTitle("Importante");
         alerta.setContentText(msg);
+        alerta.setGraphic(new ImageView("file:img/photo.png"));
+        Stage stage = (Stage)alerta.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("file:img/logo-transparente-verde.png"));
         alerta.showAndWait();
     }
 }
