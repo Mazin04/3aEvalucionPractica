@@ -1,0 +1,156 @@
+@startuml Clases 
+
+package es/tiernoparla/dam/galeria/view{
+    
+    abstract class ViewController {
+        #galeriaController: GaleriaController
+        +setGaleriaController(GaleriaController controller): void
+        +init(List<Obra> lista): void
+    }
+
+    class DarAltaPrimController extends ViewController {
+        ~irMenu(MouseEvent event): void
+        ~irAltaEscultura(MouseEvent event): void
+        ~irAltaPintura(MouseEvent event): void
+    }
+
+    class DarAltasegController extends ViewController {
+        -obras: ObservableList<Obra> 
+        ~confirmarAlta(MouseEvent event): void
+        ~mostrarAviso(String msg, AlertType tipo): void
+        ~irMenu(MouseEvent event): void
+    }
+
+    class DarAltaterceController extends ViewController {
+        ~confirmarAlta(MouseEvent event): void
+        ~mostrarAviso(String msg, AlertType tipo): void
+        ~irMenu(MouseEvent event): void
+    }
+
+    class ExposicionController extends ViewController {
+        +initialize(): void
+        ~irMenu(MouseEvent event): void
+    }
+
+    class MenuController extends ViewController {
+        ~irDarAlta(MouseEvent event): void
+        ~irExposicion(MouseEvent event): void
+        ~irSeleccionar(MouseEvent event): void
+    }
+
+    class ModificarController extends ViewController {
+        -obras: ObservableList<Obra> 
+        +initialize(): void 
+        ~calcularPrecio(MouseEvent event): void
+        ~imprimir(MouseEvent event): void
+        ~irMenu(MouseEvent event): void
+        ~modificar(MouseEvent event): void
+        -modificarEscultura(Escultura obra): void
+        -modificarPictorica(Pictorica obra): void
+        ~visualizar(MouseEvent event): void
+        ~seleccionarObra(MouseEvent event): void
+        -copiarDatosFormularioEscultura(Escultura obra): void
+        -copiarDatosFormularioPictorica(Pictorica obra): void
+        -mostrarAviso(String msg, AlertType tipo): void
+    }
+
+    interface IVistas {
+        +VIEW_MENU: String
+        +VIEW_DARALTAUNO: String
+        +VIEW_DARALTADOS: String 
+        +VIEW_DARALTATRES: String
+        +VIEW_MODIFICAR: String 
+        +VIEW_EXPO: String 
+
+    }
+
+    ViewController .> IVistas: use
+
+}
+
+
+
+package es/tiernoparla/dam/galeria/controller{
+
+    ViewController .> GaleriaController
+
+    class GaleriaController{
+        +start(Stage stage): void
+        +cerrar(Stage stage): void
+        +cargarVista(String ficheroView): ViewController
+        +add(Pictorica obra): List<Obra>
+        +add(Escultura obra): List<Obra>
+        +modify(Escultura obra): List<Obra>
+        +modify(Pictorica obra): List<Obra>
+        +obtenerObras(): List<Obra>
+    }
+}
+
+package es/tiernoparla/dam/galeria/model{
+
+    abstract class Obra {
+        #UNIDAD_MONEDA_EUR = "EUR": String
+        #UNIDAD_ALTURA = "m": String
+        #UNIDAD_PESO = "t": String
+        +{static}contador: int
+        #nombre: String
+        #autor: String
+        #precio: double
+        #altura: double
+        #peso: double
+        #numeroPiezas: int
+        #descripcion: String 
+        #tipo: String
+        #galeria: String
+        #id: int
+        +Obra() // Constructor
+        +toString() String
+        +imprimirEtiqueta(): String
+        +getPrecioFinal(): double
+        +obtenerComision(): double
+        +obtenerPiezas(): double
+        +obtenerMsgPiezas(): String
+        +obtenerAltura(): double
+        +obtenerPeso(): double
+        +imprimirPrecio(): String
+    }
+    class Escultura extends Obra {
+        -SOBRECOSTE = 50: double
+        -material: String
+        +Escultura() // Constructor
+        +getPrecioFinalEsc(): double
+        +imprimirPrecioEsc(): double
+        +getDescuento(): double
+    }
+    class Pictorica extends Obra {
+        -tecnica: String
+        +Pictorica() // Constructor
+        +getPrecioFinalPic(): double
+        +getDescuento(): double
+        +imprimirPrecioPic(): double
+    }
+    interface GaleriaDAO {
+        +obtenerObras(): List<Obra> 
+        +add(Pictorica obra): void
+        +add(Escultura obra): void 
+        +modify(Pictorica obra): void 
+        +modify(Escultura obra): void 
+    }
+    class SQLiteGaleriaDAO implements GaleriaDAO {
+        -obtenerIDAut(Obra obra): int
+        -crearAutor(Obra obra, int idAutor): void
+    }
+    class XMLGaleriaDAO implements GaleriaDAO {}
+    class TestGaleriaDAO implements GaleriaDAO {}
+    class DAOFactory{
+        +{static}MODO_TEST = 0: int
+        +{static}MODO_SQLITE = 1: int
+        +{static}MODO_XML = 2: int
+    }
+}
+
+GaleriaController ..> DAOFactory: use
+GaleriaDAO .> DAOFactory: use
+GaleriaDAO "0..*" o-- "1..*" Obra 
+
+@enduml
