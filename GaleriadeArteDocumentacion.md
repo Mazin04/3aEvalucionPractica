@@ -136,7 +136,7 @@ Descripción: El mural «Guernica» fue adquirido a Picasso por el Estado españ
 
 El alumno deberá pensar en la forma más adecuada de almacenar y recuperar esta información y justificar su decisión. (modelo E/R, transformación al relacional e implementación SQL).
 
-Se deberá crear una vista para el mes (solicitado al usuario) para cada sede: número de obras expuestas y el valor de las obras porque así lo requiere la agencia de seguros...
+Se deberá crear una vista para cada sede: número de obras expuestas y el valor de las obras porque así lo requiere la agencia de seguros...
 
 Se deberán almacenar los siguientes datos para los autores: código, nombre, año_nacimiento, estilo.
 

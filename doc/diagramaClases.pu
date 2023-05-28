@@ -129,6 +129,18 @@ package es/tiernoparla/dam/galeria/model{
         +getDescuento(): double
         +imprimirPrecioPic(): double
     }
+    class Autor {
+        -id: int
+        -nautor: String
+        -anoNacimiento: int
+        -estilo: String
+        +Autor() //Constructor
+    }
+    class Galeria {
+        -nombre: String
+        -ubicacion: String
+        +Galeria() //Constructor
+    }
     interface GaleriaDAO {
         +obtenerObras(): List<Obra> 
         +add(Pictorica obra): void
@@ -151,6 +163,8 @@ package es/tiernoparla/dam/galeria/model{
 
 GaleriaController ..> DAOFactory: use
 GaleriaDAO .> DAOFactory: use
-GaleriaDAO "0..*" o-- "1..*" Obra 
+Galeria "0..1" o-- "1..*" Obra 
+Autor *-- "1..*" Obra 
+Obra ...> GaleriaDAO: use
 
 @enduml
