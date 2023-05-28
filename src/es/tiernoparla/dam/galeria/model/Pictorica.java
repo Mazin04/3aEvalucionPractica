@@ -10,6 +10,12 @@ public class Pictorica extends Obra {
         this.tecnica = tecnica;
     }
 
+    @Override
+    public String toString(){
+        String MSG_TECNICA = "   Técnica: " + tecnica;
+        return super.toString() + "\n" + MSG_TECNICA;
+    }
+
     public double getPrecioFinalPic(){
         double DESCUENTOPIC = getDescuento();
         double precioFinalsinMod = 0;

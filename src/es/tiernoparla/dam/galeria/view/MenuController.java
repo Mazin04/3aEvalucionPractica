@@ -1,12 +1,22 @@
 package es.tiernoparla.dam.galeria.view;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import es.tiernoparla.dam.galeria.model.Obra;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class MenuController extends ViewController{
 
@@ -29,8 +39,21 @@ public class MenuController extends ViewController{
     private AnchorPane pantallamenu;
 
     @FXML
-    void exportar(MouseEvent event) {
+    void exportar(MouseEvent event) throws Exception {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Obras.txt"))) {
+            List<Obra> obras = galeriaController.obtenerObras();
+            for (Obra obra : obras) {
+                String objectData = getObjectData(obra);
+                writer.println(objectData);
+            }
+            mostrarAviso("Se ha exportado correctamente. Nombre del fichero: Obras.txt", AlertType.INFORMATION);
+        } catch (IOException e) {
+            mostrarAviso("Error al exportar el archivo: " + e.getMessage(), AlertType.ERROR);
+        }
+    }
 
+    private String getObjectData(Obra obra) {
+        return obra.toString();
     }
 
     @FXML
@@ -55,8 +78,17 @@ public class MenuController extends ViewController{
 
     @Override
     public void init(List<Obra> lista) {
-
     }
 
+    private void mostrarAviso(String msg, AlertType tipo){
+        Alert alerta = new Alert(tipo);
+        alerta.setHeaderText(null);
+        alerta.setTitle("Importante");
+        alerta.setContentText(msg);
+        alerta.setGraphic(new ImageView("file:img/photo.png"));
+        Stage stage = (Stage)alerta.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("file:img/logo-transparente-verde.png"));
+        alerta.showAndWait();
+    }
 }
 

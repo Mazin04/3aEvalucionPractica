@@ -11,6 +11,12 @@ public class Escultura extends Obra {
         this.material = material;
     }
 
+    @Override
+    public String toString(){
+        String MSG_MATERIAL = "   Material: " + material;
+        return super.toString() + "\n" + MSG_MATERIAL;
+    }
+
     public double getPrecioFinalEsc(){
 
         double descuentoEsc = getDescuento();

@@ -34,16 +34,19 @@ public abstract class Obra {
     }
 
     @Override
-    public String toString(){ //Visualizar pt1
+    public String toString(){ 
         String MSG_NOMBRE = "Nombre: " + nombre;
-        String MSG_AUTOR = "Autor: " + autor;
-        String MSG_PRECIO = "Precio: " + precio + UNIDAD_MONEDA_EUR;
-        String MSG_ALTURA = "Altura: " + altura + UNIDAD_ALTURA;
-        String MSG_PESO = "Peso : " + peso + UNIDAD_PESO;
-        String MSG_NUMPIEZAS = "Número de piezas: " + numeroPiezas;
-        String MSG_DESCRIPCION = "Descripción: " + descripcion;
+        String MSG_ID = "   ID: " + id;
+        String MSG_AUTOR = "   Autor: " + autor;
+        String MSG_PRECIO = "   Precio: " + precio + UNIDAD_MONEDA_EUR;
+        String MSG_ALTURA = "   Altura: " + altura + UNIDAD_ALTURA;
+        String MSG_PESO = "   Peso: " + peso + UNIDAD_PESO;
+        String MSG_NUMPIEZAS = "   Número de piezas: " + numeroPiezas;
+        String MSG_DESCRIPCION = "   Descripción: " + descripcion;
+        String MSG_TIPO = "   Tipo: " + tipo;
+        String MSG_GALERIA = "   GALERIA: " + galeria;
         
-        return MSG_NOMBRE + "\n" + MSG_AUTOR + "\n" + MSG_PRECIO + "\n" + MSG_ALTURA + "\n" + MSG_PESO + "\n" + MSG_NUMPIEZAS + "\n" + MSG_DESCRIPCION;
+        return MSG_NOMBRE + "\n" + MSG_ID + "\n" + MSG_TIPO + "\n" + MSG_AUTOR + "\n" + MSG_PRECIO + "\n" + MSG_ALTURA + "\n" + MSG_PESO + "\n" + MSG_NUMPIEZAS + "\n" + MSG_DESCRIPCION + "\n" + MSG_GALERIA;
     }
 
     public String imprimirEtiqueta(){
