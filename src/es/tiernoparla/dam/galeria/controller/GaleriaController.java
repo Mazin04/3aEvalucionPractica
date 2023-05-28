@@ -91,7 +91,7 @@ public class GaleriaController extends Application{
     }
 
     public List<Obra> obtenerObras() throws Exception{
-            return dao.obtenerObras();
+        return dao.obtenerObras();
     }
 
 }
