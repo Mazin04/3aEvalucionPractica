@@ -10,7 +10,6 @@ import es.tiernoparla.dam.galeria.model.Escultura;
 import es.tiernoparla.dam.galeria.model.XML.SQLiteXMLGaleriaDAO;
 
 public class SAXEscultura extends DefaultHandler{
-
     private final static String OBRA = "obra";
     private final static String ESCULTURA = "Escultura";
 

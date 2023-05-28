@@ -1,5 +1,5 @@
 <!ELEMENT obras (obra+)>
-<!ELEMENT obra (id,nombre,autor,precio,altura,peso,num_piezas,descripcion,tecnica?,galeria,material?)>
+<!ELEMENT obra (id,nombre,autor,precio,altura,peso,num_piezas,descripcion,tecnica?,material?,galeria)>
 <!ATTLIST obra tipo NMTOKEN #REQUIRED>
 <!ELEMENT id (#PCDATA)>
 <!ELEMENT nombre (#PCDATA)>
@@ -9,5 +9,5 @@
 <!ELEMENT num_piezas (#PCDATA)>
 <!ELEMENT descripcion (#PCDATA)>
 <!ELEMENT tecnica (#PCDATA)>
-<!ELEMENT galeria (#PCDATA)>
 <!ELEMENT material (#PCDATA)>
+<!ELEMENT galeria (#PCDATA)>

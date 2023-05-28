@@ -52,8 +52,8 @@ public class SQLiteXMLGaleriaDAO{
         psAut.close();
     }
 
-    public void add(Escultura obra) throws Exception {
-        int idAutor = obtenerIDAut(obra);
+    public void add(Escultura escultura) throws Exception {
+        int idAutor = obtenerIDAut(escultura);
 
         final String sqlID = "SELECT MAX(ID_OBRA) FROM OBRA";
         PreparedStatement psID = conn.prepareStatement(sqlID);
@@ -67,18 +67,18 @@ public class SQLiteXMLGaleriaDAO{
         PreparedStatement ps = conn.prepareStatement(sql);
         PreparedStatement psEsc = conn.prepareStatement(sqlEsc);
         ps.setInt(1, idObra);
-        ps.setString(2, obra.getNombre());
+        ps.setString(2, escultura.getNombre());
         ps.setInt(3, idAutor);
-        ps.setString(4, obra.getTipo());
-        ps.setDouble(5, obra.getPrecio());
-        ps.setDouble(6, obra.getAltura());
-        ps.setDouble(7, obra.getPeso());
-        ps.setInt(8, obra.getNumeroPiezas());
-        ps.setString(9, obra.getDescripcion());
-        ps.setString(10, obra.getGaleria());
+        ps.setString(4, escultura.getTipo());
+        ps.setDouble(5, escultura.getPrecio());
+        ps.setDouble(6, escultura.getAltura());
+        ps.setDouble(7, escultura.getPeso());
+        ps.setInt(8, escultura.getNumeroPiezas());
+        ps.setString(9, escultura.getDescripcion());
+        ps.setString(10, escultura.getGaleria());
 
         psEsc.setInt(1, idObra);
-        psEsc.setString(2, obra.getMaterial());
+        psEsc.setString(2, escultura.getMaterial());
 
         ps.addBatch();
         conn.setAutoCommit(false);
@@ -93,8 +93,8 @@ public class SQLiteXMLGaleriaDAO{
         psEsc.close();
     }
 
-    public void add(Pictorica obra) throws Exception {
-        int idAutor = obtenerIDAut(obra);
+    public void add(Pictorica pictorica) throws Exception {
+        int idAutor = obtenerIDAut(pictorica);
 
         final String sqlID = "SELECT MAX(ID_OBRA) FROM OBRA";
         PreparedStatement psID = conn.prepareStatement(sqlID);
@@ -108,18 +108,18 @@ public class SQLiteXMLGaleriaDAO{
         PreparedStatement ps = conn.prepareStatement(sql);
         PreparedStatement psPic = conn.prepareStatement(sqlPic);
         ps.setInt(1, idObra);
-        ps.setString(2, obra.getNombre());
+        ps.setString(2, pictorica.getNombre());
         ps.setInt(3, idAutor);
-        ps.setString(4, obra.getTipo());
-        ps.setDouble(5, obra.getPrecio());
-        ps.setDouble(6, obra.getAltura());
-        ps.setDouble(7, obra.getPeso());
-        ps.setInt(8, obra.getNumeroPiezas());
-        ps.setString(9, obra.getDescripcion());
-        ps.setString(10, obra.getGaleria());
+        ps.setString(4, pictorica.getTipo());
+        ps.setDouble(5, pictorica.getPrecio());
+        ps.setDouble(6, pictorica.getAltura());
+        ps.setDouble(7, pictorica.getPeso());
+        ps.setInt(8, pictorica.getNumeroPiezas());
+        ps.setString(9, pictorica.getDescripcion());
+        ps.setString(10, pictorica.getGaleria());
 
         psPic.setInt(1, idObra);
-        psPic.setString(2, obra.getTecnica());
+        psPic.setString(2, pictorica.getTecnica());
 
         ps.addBatch();
         conn.setAutoCommit(false);

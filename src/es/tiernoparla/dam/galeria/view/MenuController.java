@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MenuController extends ViewController{
+    private static int contador = 0;
 
     @FXML
     private Button btnAlta;
@@ -56,7 +57,13 @@ public class MenuController extends ViewController{
 
     @FXML
     void importar(MouseEvent event) throws Exception {
-        galeriaController.importar();
+        if (contador == 0){
+            galeriaController.importar();
+            mostrarAviso("Se ha importado correctamente", AlertType.CONFIRMATION);
+            contador++;
+        } else if (contador != 0){
+            mostrarAviso("Ya se ha importado una vez, no se puede importar más", AlertType.INFORMATION);
+        }
     }
 
     @FXML
