@@ -6,8 +6,6 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import es.tiernoparla.dam.galeria.model.Obra;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -57,8 +55,8 @@ public class MenuController extends ViewController{
     }
 
     @FXML
-    void importar(MouseEvent event) {
-
+    void importar(MouseEvent event) throws Exception {
+        galeriaController.importar();
     }
 
     @FXML

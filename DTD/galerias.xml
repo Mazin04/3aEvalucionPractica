@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../CSS/galerias.css"?>
+<!DOCTYPE galerias SYSTEM "galerias.dtd">
+
+<galerias>
+    <galeria>
+        <nombre>Galeria JWD</nombre>
+        <ubicacion>Madrid</ubicacion>
+    </galeria> 
+</galerias>

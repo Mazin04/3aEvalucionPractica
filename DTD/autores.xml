@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../CSS/autores.css"?>
+<!DOCTYPE autores SYSTEM "autores.dtd">
+
+<autores>
+    <autor>
+        <id>001</id>
+        <nombre>Pablo Picasso</nombre>
+        <ano_nacimiento>1881</ano_nacimiento>
+        <estilo>Cubismo</estilo>
+    </autor>
+    <autor>
+        <id>005</id>
+        <nombre>Ulpiano Checa</nombre>
+        <ano_nacimiento>1860</ano_nacimiento>
+        <estilo>Pintura</estilo>
+    </autor>
+</autores>

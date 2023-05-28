@@ -1,4 +1,4 @@
-package es.tiernoparla.dam.galeria.model;
+package es.tiernoparla.dam.galeria.model.BBDD;
 
 import java.nio.charset.Charset;
 import java.sql.Connection;
@@ -9,6 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import es.tiernoparla.dam.galeria.model.Escultura;
+import es.tiernoparla.dam.galeria.model.Obra;
+import es.tiernoparla.dam.galeria.model.Pictorica;
 
 public class SQLiteGaleriaDAO implements GaleriaDAO{
     private static final String URL = "jdbc:sqlite:galeria.db";
@@ -179,12 +183,8 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
 
     @Override
     public void modify(Pictorica obra) throws Exception {
-        final String sqlAutor = "SELECT ID_AUTOR FROM AUTOR WHERE N_AUTOR = ?";
-        PreparedStatement psA = conn.prepareStatement(sqlAutor);
-        psA.setString(1, obra.getAutor());
-        ResultSet rsA = psA.executeQuery();
-        int idAutor = rsA.getInt("ID_AUTOR");
-
+        int idAutor = obtenerIDAut(obra);
+        
         final String sql = "UPDATE OBRA SET N_OBRA = ?, ID_AUTOR = ?, PRECIO = ?, ALTURA = ?, PESO = ?, N_PIEZAS = ?, DESCRIPCION = ?, GALERIA = ? WHERE ID_OBRA = ?";
         final String sqlPic = "UPDATE PINTURA SET TECNICA = ? WHERE ID_OBRA = ?";
 
@@ -216,12 +216,7 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
 
     @Override
     public void modify(Escultura obra) throws Exception {
-        final String sqlAutor = "SELECT ID_AUTOR FROM AUTOR WHERE N_AUTOR = ?";
-        PreparedStatement psA = conn.prepareStatement(sqlAutor);
-        psA.setString(1, obra.getAutor());
-        ResultSet rsA = psA.executeQuery();
-        int idAutor = rsA.getInt("ID_AUTOR");
-
+        int idAutor = obtenerIDAut(obra);
         final String sql = "UPDATE OBRA SET N_OBRA = ?, ID_AUTOR = ?, PRECIO = ?, ALTURA = ?, PESO = ?, N_PIEZAS = ?, DESCRIPCION = ?, GALERIA = ? WHERE ID_OBRA = ?";
         final String sqlEsc = "UPDATE ESCULTURA SET MATERIAL = ? WHERE ID_OBRA = ?";
 

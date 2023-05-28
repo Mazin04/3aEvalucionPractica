@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT autores (autor)*>
+<!ELEMENT autor (id, nombre, ano_nacimiento, estilo)>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT ano_nacimiento (#PCDATA)>
+<!ELEMENT estilo (#PCDATA)>

@@ -1,4 +1,4 @@
-package es.tiernoparla.dam.galeria.model;
+package es.tiernoparla.dam.galeria.model.BBDD;
 
 import java.sql.SQLException;
 

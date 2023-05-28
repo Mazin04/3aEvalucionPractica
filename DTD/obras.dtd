@@ -1,0 +1,13 @@
+<!ELEMENT obras (obra+)>
+<!ELEMENT obra (id,nombre,autor,precio,altura,peso,num_piezas,descripcion,tecnica?,galeria,material?)>
+<!ATTLIST obra tipo NMTOKEN #REQUIRED>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT autor (#PCDATA)>
+<!ELEMENT precio (#PCDATA)>
+<!ATTLIST precio moneda CDATA #FIXED "€"><!ELEMENT altura (#PCDATA)><!ATTLIST altura longitud NMTOKEN #FIXED "m"><!ELEMENT peso (#PCDATA)><!ATTLIST peso unidad NMTOKEN #FIXED "t">
+<!ELEMENT num_piezas (#PCDATA)>
+<!ELEMENT descripcion (#PCDATA)>
+<!ELEMENT tecnica (#PCDATA)>
+<!ELEMENT galeria (#PCDATA)>
+<!ELEMENT material (#PCDATA)>

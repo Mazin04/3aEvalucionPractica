@@ -3,11 +3,13 @@ package es.tiernoparla.dam.galeria.controller;
 import java.sql.SQLException;
 import java.util.List;
 import es.tiernoparla.dam.galeria.App;
-import es.tiernoparla.dam.galeria.model.DAOFactory;
 import es.tiernoparla.dam.galeria.model.Escultura;
-import es.tiernoparla.dam.galeria.model.GaleriaDAO;
 import es.tiernoparla.dam.galeria.model.Obra;
 import es.tiernoparla.dam.galeria.model.Pictorica;
+import es.tiernoparla.dam.galeria.model.BBDD.DAOFactory;
+import es.tiernoparla.dam.galeria.model.BBDD.GaleriaDAO;
+import es.tiernoparla.dam.galeria.model.XML.DAOFactoryXML;
+import es.tiernoparla.dam.galeria.model.XML.GaleriaXMLDAO;
 import es.tiernoparla.dam.galeria.view.IVistas;
 import es.tiernoparla.dam.galeria.view.MenuController;
 import es.tiernoparla.dam.galeria.view.ViewController;
@@ -24,10 +26,12 @@ import javafx.stage.Stage;
 public class GaleriaController extends Application{
 
     private GaleriaDAO dao;
+    private GaleriaXMLDAO daoX;
     private static Stage currentStage;
 
     public GaleriaController() throws SQLException{
         dao = DAOFactory.getDao(DAOFactory.MODO_SQLITE);
+        daoX = DAOFactoryXML.getDao(DAOFactoryXML.MODO_XML);
     }
 
     @Override
@@ -92,6 +96,10 @@ public class GaleriaController extends Application{
 
     public List<Obra> obtenerObras() throws Exception{
         return dao.obtenerObras();
+    }
+
+    public void importar() throws Exception{
+        daoX.importar();
     }
 
 }

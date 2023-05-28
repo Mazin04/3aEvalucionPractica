@@ -1,7 +1,11 @@
-package es.tiernoparla.dam.galeria.model;
+package es.tiernoparla.dam.galeria.model.BBDD;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import es.tiernoparla.dam.galeria.model.Escultura;
+import es.tiernoparla.dam.galeria.model.Obra;
+import es.tiernoparla.dam.galeria.model.Pictorica;
 
 public class TestGaleriaDAO implements GaleriaDAO {
 

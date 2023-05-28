@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../CSS/escultura.css"?>
+<!DOCTYPE obras SYSTEM "obras.dtd">
+
+<obras>
+    <obra tipo="pictórica">
+        <id>001</id>
+        <nombre>Guernica</nombre>
+        <autor>Picasso</autor>
+        <precio moneda="€">1000</precio>
+        <altura longitud="m">5</altura>
+        <peso unidad="t">2</peso>
+        <num_piezas>5</num_piezas>
+        <descripcion>Cuadro guerra civil</descripcion>
+        <tecnica>Óleo</tecnica>
+        <galeria>Galeria JWD</galeria>
+    </obra>
+    <obra tipo="pictórica">
+        <id>002</id>
+        <nombre>La Vie</nombre>
+        <autor>Picasso</autor>
+        <precio moneda="€">200</precio>
+        <altura longitud="m">1</altura>
+        <peso unidad="t">1</peso>
+        <num_piezas>1</num_piezas>
+        <descripcion>óleo</descripcion>
+        <tecnica>Óleo</tecnica>
+        <galeria>Galeria JWD</galeria>
+    </obra>
+    <obra tipo="pictórica">
+        <id>003</id>
+        <nombre>El Sueño</nombre>
+        <autor>Picasso</autor>
+        <precio moneda="€">300</precio>
+        <altura longitud="m">1.3</altura>
+        <peso unidad="t">1</peso>
+        <num_piezas>1</num_piezas>
+        <descripcion>óleo</descripcion>
+        <tecnica>Óleo</tecnica>
+        <galeria>Galeria JWD</galeria>
+    </obra>
+    <obra tipo="pictórica">
+        <id>004</id>
+        <nombre>Retrato de Dora Maar</nombre>
+        <autor>Picasso</autor>
+        <precio moneda="€">400</precio>
+        <altura longitud="m">1</altura>
+        <peso unidad="t">0.8</peso>
+        <num_piezas>1</num_piezas>
+        <descripcion>óleo</descripcion>
+        <tecnica>Óleo</tecnica>
+        <galeria>Galeria JWD</galeria>
+    </obra>
+    <obra tipo="escultura">
+        <id>005</id>
+        <nombre>El piel roja</nombre>
+        <autor>U.Checa</autor>
+        <precio moneda="€">350</precio>
+        <altura longitud="m">1</altura>
+        <peso unidad="t">0.8</peso>
+        <num_piezas>1</num_piezas>
+        <descripcion>Escultura</descripcion>
+        <galeria>Galeria JWD</galeria>
+        <material>Bronce</material>
+    </obra>
+</obras>
