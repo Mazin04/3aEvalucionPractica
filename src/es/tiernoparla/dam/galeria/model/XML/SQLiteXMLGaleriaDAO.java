@@ -141,7 +141,6 @@ public class SQLiteXMLGaleriaDAO{
 
         psGal.setString(1, galeria.getNombre());
         psGal.setString(2, galeria.getUbicacion());
-
         psGal.addBatch();
         conn.setAutoCommit(false);
         psGal.executeBatch();

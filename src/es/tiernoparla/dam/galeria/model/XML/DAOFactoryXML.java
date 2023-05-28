@@ -12,4 +12,6 @@ public class DAOFactoryXML{
             default: return new TestXMLGaleriaDAO();
         }
     }
+
+    
 }
