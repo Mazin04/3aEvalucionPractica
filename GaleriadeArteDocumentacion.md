@@ -372,7 +372,7 @@ GaleriaController ..> GDA: use
 En cuanto al diagrama de clases, el diseño quedaría de la siguiente manera:
 
 ```plantuml
-@startuml diagrama  de clases 
+@startuml diagrama de clases 
 
 package es/tiernoparla/dam/galeria/view{
     
@@ -430,17 +430,16 @@ package es/tiernoparla/dam/galeria/view{
         -mostrarAviso(String msg, AlertType tipo): void
     }
 
-    interface IVistas {
-        +VIEW_MENU: String
-        +VIEW_DARALTAUNO: String
-        +VIEW_DARALTADOS: String 
-        +VIEW_DARALTATRES: String
-        +VIEW_MODIFICAR: String 
-        +VIEW_EXPO: String 
-
+    enum Vistas {
+        VIEW_MENU
+        VIEW_DARALTAUNO
+        VIEW_DARALTADOS
+        VIEW_DARALTATRES
+        VIEW_MODIFICAR
+        VIEW_EXPO
     }
 
-    ViewController .> IVistas: use
+    ViewController .> Vistas: use
 
 }
 

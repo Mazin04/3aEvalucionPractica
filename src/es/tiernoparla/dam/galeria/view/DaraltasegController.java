@@ -92,7 +92,7 @@ public class DaraltasegController extends ViewController{
                 galeriaController.add(pintura);
                 this.obras.add(pintura);
                 mostrarAviso("La obra ha sido insertada correctamente", AlertType.INFORMATION);
-                galeriaController.cargarVista(IVistas.VIEW_MENU);
+                galeriaController.cargarVista(Vistas.VIEW_MENU.getRuta());
             } catch (NumberFormatException e) {
                 mostrarAviso("Error en un campo numérico", AlertType.ERROR);    
             }
@@ -106,7 +106,7 @@ public class DaraltasegController extends ViewController{
      */
     @FXML
     void irMenu(MouseEvent event) throws Exception {
-        galeriaController.cargarVista(IVistas.VIEW_MENU);
+        galeriaController.cargarVista(Vistas.VIEW_MENU.getRuta());
     }
 
     

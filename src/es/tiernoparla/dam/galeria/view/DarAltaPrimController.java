@@ -36,7 +36,7 @@ public class DarAltaPrimController extends ViewController{
      */
     @FXML
     void irAltaEscultura(MouseEvent event) throws Exception {
-        galeriaController.cargarVista(IVistas.VIEW_DARALTATRES);
+        galeriaController.cargarVista(Vistas.VIEW_DARALTATRES.getRuta());
     }
 
     
@@ -46,7 +46,7 @@ public class DarAltaPrimController extends ViewController{
      */
     @FXML
     void irAltaPintura(MouseEvent event) throws Exception {
-        galeriaController.cargarVista(IVistas.VIEW_DARALTADOS);
+        galeriaController.cargarVista(Vistas.VIEW_DARALTADOS.getRuta());
     }
 
     
@@ -56,7 +56,7 @@ public class DarAltaPrimController extends ViewController{
      */
     @FXML
     void irMenu(MouseEvent event) throws Exception {
-        galeriaController.cargarVista(IVistas.VIEW_MENU);
+        galeriaController.cargarVista(Vistas.VIEW_MENU.getRuta());
     }
 
     

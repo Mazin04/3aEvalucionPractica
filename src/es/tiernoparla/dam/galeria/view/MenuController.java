@@ -95,7 +95,7 @@ public class MenuController extends ViewController{
      */
     @FXML
     void irDarAlta(MouseEvent event) throws Exception {
-        galeriaController.cargarVista(IVistas.VIEW_DARALTAUNO);
+        galeriaController.cargarVista(Vistas.VIEW_DARALTAUNO.getRuta());
     }
 
     
@@ -106,7 +106,7 @@ public class MenuController extends ViewController{
      */
     @FXML
     void irExposicion(MouseEvent event) throws Exception{
-        galeriaController.cargarVista(IVistas.VIEW_EXPO);
+        galeriaController.cargarVista(Vistas.VIEW_EXPO.getRuta());
     }
 
     
@@ -117,7 +117,7 @@ public class MenuController extends ViewController{
      */
     @FXML
     void irSeleccionar(MouseEvent event) throws Exception {
-        galeriaController.cargarVista(IVistas.VIEW_MODIFICAR);
+        galeriaController.cargarVista(Vistas.VIEW_MODIFICAR.getRuta());
     }
 
     

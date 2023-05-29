@@ -158,7 +158,7 @@ public class ModificarController extends ViewController{
      */
     @FXML
     void irMenu(MouseEvent event) throws Exception {
-        galeriaController.cargarVista(IVistas.VIEW_MENU);
+        galeriaController.cargarVista(Vistas.VIEW_MENU.getRuta());
     }
 
     

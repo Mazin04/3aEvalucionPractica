@@ -13,7 +13,7 @@ import es.tiernoparla.dam.galeria.model.BBDD.DAOFactory;
 import es.tiernoparla.dam.galeria.model.BBDD.GaleriaDAO;
 import es.tiernoparla.dam.galeria.model.XML.DAOFactoryXML;
 import es.tiernoparla.dam.galeria.model.XML.GaleriaXMLDAO;
-import es.tiernoparla.dam.galeria.view.IVistas;
+import es.tiernoparla.dam.galeria.view.Vistas;
 import es.tiernoparla.dam.galeria.view.MenuController;
 import es.tiernoparla.dam.galeria.view.ViewController;
 import javafx.application.Application;
@@ -52,7 +52,7 @@ public class GaleriaController extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         currentStage = stage;
-        MenuController viewController = (MenuController)cargarVista(IVistas.VIEW_MENU);
+        MenuController viewController = (MenuController)cargarVista(Vistas.VIEW_MENU.getRuta());
         viewController.init(obtenerObras());
         stage.setOnCloseRequest(event -> {
             event.consume();
