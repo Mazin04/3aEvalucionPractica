@@ -15,6 +15,11 @@ public class Pictorica extends Obra {
         this.tecnica = tecnica;
     }
 
+
+    /** 
+     * Devuelve en el formato adecuado las características de una obra pictórica
+     * @return String
+     */
     @Override
     public String toString(){
         String MSG_TECNICA = "   Técnica: " + tecnica;
@@ -22,7 +27,8 @@ public class Pictorica extends Obra {
     }
 
     
-    /** 
+    /**
+     * Obtiene el precio final incluyendo el cálculo de descuentos de una obra pictórica
      * @return double
      */
     public double getPrecioFinalPic(){
@@ -35,6 +41,7 @@ public class Pictorica extends Obra {
 
     
     /** 
+     * Cálculo del descuento en base al 10% de descuento al ser pictórica
      * @return double
      */
     public double getDescuento() {
@@ -44,11 +51,15 @@ public class Pictorica extends Obra {
 
     
     /** 
+     * Obtiene el mensaje con las características únicas de una obra pictórica
      * @return String
      */
     public String imprimirPrecioPic(){
-        return "\nDescuento (10% Óleo €): " + this.getDescuento() + "\nPrecio final de venta (€): " + String.valueOf(this.getPrecioFinalPic());
+        final String I_DESCUENTO = "\nDescuento (10% Óleo €): ";
+        final String I_PRECIOFINAL = "\nPrecio final de venta (€): ";
+        return I_DESCUENTO + this.getDescuento() + I_PRECIOFINAL + String.valueOf(this.getPrecioFinalPic());
     }
+
     public String getTecnica() {
         return tecnica;
     }

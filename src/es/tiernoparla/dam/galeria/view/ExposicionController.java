@@ -24,6 +24,17 @@ import javafx.scene.layout.AnchorPane;
  */
 public class ExposicionController extends ViewController{
 
+    private static final String GALERIA = "galeria";
+    private static final String DESCRIPCION = "descripcion";
+    private static final String NUMERO_PIEZAS = "numeroPiezas";
+    private static final String PESO = "peso";
+    private static final String ALTURA = "altura";
+    private static final String PRECIO = "precio";
+    private static final String AUTOR = "autor";
+    private static final String TIPO = "tipo";
+    private static final String NOMBRE = "nombre";
+    private static final String ID = "id";
+
     @FXML
     private Button btnCancelar;
 
@@ -67,28 +78,29 @@ public class ExposicionController extends ViewController{
     private TableView<Obra> tblObras;
 
     /**
-     * Elemento de tabla para añadir nuevas obras
-     */
+     * Array de obras
+    */
     private ObservableList<Obra> obras;
 
     
     /** 
+     *  Inicializa y configura la tabla y sus celdas.
      * @throws Exception
      */
     @FXML
     public void initialize() throws Exception{
         obras = FXCollections.observableArrayList();
 
-        this.colID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        this.colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        this.colTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        this.colAutor.setCellValueFactory(new PropertyValueFactory<>("autor"));
-        this.colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        this.colAltura.setCellValueFactory(new PropertyValueFactory<>("altura"));
-        this.colPeso.setCellValueFactory(new PropertyValueFactory<>("peso"));
-        this.colPiezas.setCellValueFactory(new PropertyValueFactory<>("numeroPiezas"));
-        this.colDesc.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        this.colGaleria.setCellValueFactory(new PropertyValueFactory<>("galeria"));
+        this.colID.setCellValueFactory(new PropertyValueFactory<>(ID));
+        this.colNombre.setCellValueFactory(new PropertyValueFactory<>(NOMBRE));
+        this.colTipo.setCellValueFactory(new PropertyValueFactory<>(TIPO));
+        this.colAutor.setCellValueFactory(new PropertyValueFactory<>(AUTOR));
+        this.colPrecio.setCellValueFactory(new PropertyValueFactory<>(PRECIO));
+        this.colAltura.setCellValueFactory(new PropertyValueFactory<>(ALTURA));
+        this.colPeso.setCellValueFactory(new PropertyValueFactory<>(PESO));
+        this.colPiezas.setCellValueFactory(new PropertyValueFactory<>(NUMERO_PIEZAS));
+        this.colDesc.setCellValueFactory(new PropertyValueFactory<>(DESCRIPCION));
+        this.colGaleria.setCellValueFactory(new PropertyValueFactory<>(GALERIA));
         
         this.colDetalle.setCellValueFactory(cellData -> {
             Obra obra = cellData.getValue();
@@ -103,6 +115,7 @@ public class ExposicionController extends ViewController{
 
     
     /** 
+     * Este método se encarga de llamar al controlador y de cambiar de vista, a la vista del menú
      * @param event
      * @throws Exception
      */
@@ -111,10 +124,6 @@ public class ExposicionController extends ViewController{
         galeriaController.cargarVista(Vistas.VIEW_MENU.getRuta());
     }
 
-    
-    /** 
-     * @param lista
-     */
     @Override
     public void init(List<Obra> lista) {
         obras.addAll(lista);

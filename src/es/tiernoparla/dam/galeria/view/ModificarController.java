@@ -29,6 +29,20 @@ import javafx.stage.Stage;
  * Controlador de la vista modificar
  */
 public class ModificarController extends ViewController{
+    private static final String RUTA_ICONO = "file:img/logo-transparente-verde.png";
+    private static final String RUTA_LOGO = "file:img/photo.png";
+    private static final String IMPORTANTE = "Importante";
+    private static final String MODIFY_CORRECT = "Se ha modificado correctamente la obra";
+    private static final String ERROR_FORMAT_NUMBER = "Error un campo numérico";
+    private static final String BLANK_SPACE = "Se ha dejado vacío un campo/s";
+    private static final String MUST_SELECT = "Debe seleccionar un registro y luego modificarlo";
+    private static final String PICTORICA = "Pictórica";
+    private static final String GALERIA = "galeria";
+    private static final String PRECIO = "precio";
+    private static final String AUTOR = "autor";
+    private static final String TIPO = "tipo";
+    private static final String NOMBRE = "nombre";
+
     @FXML
     private Button btnCancelar;
 
@@ -104,9 +118,9 @@ public class ModificarController extends ViewController{
     public void initialize() throws Exception{
         obras = FXCollections.observableArrayList();
 
-        this.colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        this.colTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        this.colAutor.setCellValueFactory(new PropertyValueFactory<>("autor"));
+        this.colNombre.setCellValueFactory(new PropertyValueFactory<>(NOMBRE));
+        this.colTipo.setCellValueFactory(new PropertyValueFactory<>(TIPO));
+        this.colAutor.setCellValueFactory(new PropertyValueFactory<>(AUTOR));
         
         this.colDetalle.setCellValueFactory(cellData -> {
             Obra obra = cellData.getValue();
@@ -117,8 +131,8 @@ public class ModificarController extends ViewController{
             }
         });
 
-        this.colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        this.colGaleria.setCellValueFactory(new PropertyValueFactory<>("galeria"));
+        this.colPrecio.setCellValueFactory(new PropertyValueFactory<>(PRECIO));
+        this.colGaleria.setCellValueFactory(new PropertyValueFactory<>(GALERIA));
     }
 
 
@@ -130,7 +144,7 @@ public class ModificarController extends ViewController{
     @FXML
     void calcularPrecio(MouseEvent event) {
         Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
-        if(obra.getTipo().equals("Pictórica")){
+        if(obra.getTipo().equals(PICTORICA)){
             mostrarAviso(obra.imprimirPrecio() + ((Pictorica)obra).imprimirPrecioPic(), AlertType.INFORMATION);
         } else {
             mostrarAviso(obra.imprimirPrecio() + ((Escultura)obra).imprimirPrecioEsc(), AlertType.INFORMATION);
@@ -167,9 +181,9 @@ public class ModificarController extends ViewController{
     void modificar(MouseEvent event) throws Exception {
         Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
         if(obra == null){
-            mostrarAviso("Debe seleccionar un registro y luego modificarlo", AlertType.ERROR);
+            mostrarAviso(MUST_SELECT, AlertType.ERROR);
         }else if(txfNombre.getText().isBlank() || txfAutor.getText().isBlank() || txfDesc.getText().isBlank() || txfMaterial.getText().isBlank()){
-            mostrarAviso("Se ha dejado vacío un campo/s", AlertType.ERROR);
+            mostrarAviso(BLANK_SPACE, AlertType.ERROR);
         }else{
             try{
                 if(obra instanceof Pictorica){
@@ -178,7 +192,7 @@ public class ModificarController extends ViewController{
                     modificarEscultura((Escultura)obra);
                 }
             }catch(NumberFormatException e){
-                mostrarAviso("Error en el campo edad", AlertType.ERROR);
+                mostrarAviso(ERROR_FORMAT_NUMBER, AlertType.ERROR);
             }
         }
     }
@@ -212,10 +226,10 @@ public class ModificarController extends ViewController{
 
             galeriaController.modify(obra);
             this.tblObras.refresh();
-            mostrarAviso("Se ha modificado correctamente la obra", AlertType.INFORMATION);
+            mostrarAviso(MODIFY_CORRECT, AlertType.INFORMATION);
 
         } catch (NumberFormatException e) {
-            mostrarAviso("Error en un campo numérico", AlertType.ERROR);
+            mostrarAviso(ERROR_FORMAT_NUMBER, AlertType.ERROR);
         }
         
     }
@@ -249,9 +263,9 @@ public class ModificarController extends ViewController{
 
             galeriaController.modify(obra);
             this.tblObras.refresh(); 
-            mostrarAviso("Se ha modificado correctamente la obra", AlertType.INFORMATION);
+            mostrarAviso(MODIFY_CORRECT, AlertType.INFORMATION);
         } catch (NumberFormatException e) {
-            mostrarAviso("Error en un campo numérico", AlertType.ERROR);
+            mostrarAviso(ERROR_FORMAT_NUMBER, AlertType.ERROR);
         }
     }
 
@@ -331,11 +345,11 @@ public class ModificarController extends ViewController{
     private void mostrarAviso(String msg, AlertType tipo){
         Alert alerta = new Alert(tipo);
         alerta.setHeaderText(null);
-        alerta.setTitle("Importante");
+        alerta.setTitle(IMPORTANTE);
         alerta.setContentText(msg);
-        alerta.setGraphic(new ImageView("file:img/photo.png"));
+        alerta.setGraphic(new ImageView(RUTA_LOGO));
         Stage stage = (Stage)alerta.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image("file:img/logo-transparente-verde.png"));
+        stage.getIcons().add(new Image(RUTA_ICONO));
         alerta.showAndWait();
     }
 }

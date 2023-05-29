@@ -8,13 +8,13 @@ package es.tiernoparla.dam.galeria.model;
  */
 public class Autor {
     private int id;
-    private String nautor;
+    private String nAutor;
     private int anoNacimiento;
     private String estilo;
     
-    public Autor(int id, String nautor, int anoNacimiento, String estilo) {
+    public Autor(int id, String nAutor, int anoNacimiento, String estilo) {
         this.id = id;
-        this.nautor = nautor;
+        this.nAutor = nAutor;
         this.anoNacimiento = anoNacimiento;
         this.estilo = estilo;
     }
@@ -28,11 +28,11 @@ public class Autor {
     }
 
     public String getNautor() {
-        return nautor;
+        return nAutor;
     }
 
-    public void setNautor(String nautor) {
-        this.nautor = nautor;
+    public void setNautor(String nAutor) {
+        this.nAutor = nAutor;
     }
 
     public int getAnoNacimiento() {

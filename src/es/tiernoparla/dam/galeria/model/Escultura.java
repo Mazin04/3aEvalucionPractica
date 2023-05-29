@@ -50,7 +50,10 @@ public class Escultura extends Obra {
      * @return String
      */
     public String imprimirPrecioEsc() {
-        return "\nDescuento (20% Escultura €): " + this.getDescuento() + "\nPrecio por sobrecoste (€): " + this.getSOBRECOSTE() + "\nPrecio final de venta (€): " + String.valueOf(this.getPrecioFinalEsc());
+        final String DESCUENTO = "\nDescuento (20% Escultura €): ";
+        final String SOBRECOSTE_MSG = "\nPrecio por sobrecoste (€): ";
+        final String PRECIOFINAL = "\nPrecio final de venta (€): ";
+        return DESCUENTO + this.getDescuento() + SOBRECOSTE_MSG + this.getSOBRECOSTE() + PRECIOFINAL + String.valueOf(this.getPrecioFinalEsc());
     }
 
     

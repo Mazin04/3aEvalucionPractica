@@ -168,7 +168,16 @@ public abstract class Obra {
      * @return String
      */
     public String imprimirPrecio(){
-        return "Nombre: " + this.getNombre() + "\nAltura (m): "+ this.getAltura() + "\nPeso: " + this.getPrecio() + "\nNúmero de piezas: " + this.getNumeroPiezas() + "\nPrecio (€): " + this.getPrecio() + "\nComisión Galería (€): " + this.obtenerComision() + "\nImporte por peso (€): " + this.obtenerPeso() + "\nImporte por altura (€): " + this.obtenerAltura() + this.obtenerMsgPiezas() + "\nPrecio de venta (€): " + this.getPrecioFinal();
+        final String I_NOMBRE = "Nombre: ";
+        final String I_ALTURA = "\nAltura (m): ";
+        final String I_PESO = "\nPeso: ";
+        final String I_NUMPIEZAS = "\nNúmero de piezas: ";
+        final String I_PRECIO = "\nPrecio (€): ";
+        final String I_COMISION = "\nComisión Galería (€): ";
+        final String I_P_PESO = "\nImporte por peso (€): ";
+        final String I_P_ALTURA = "\nImporte por altura (€): ";
+        final String I_PRECIOFIN = "\nPrecio de venta (€): ";
+        return I_NOMBRE + this.getNombre() + I_ALTURA + this.getAltura() + I_PESO + this.getPrecio() + I_NUMPIEZAS + this.getNumeroPiezas() + I_PRECIO + this.getPrecio() + I_COMISION + this.obtenerComision() + I_P_PESO + this.obtenerPeso() + I_P_ALTURA + this.obtenerAltura() + this.obtenerMsgPiezas() + I_PRECIOFIN + this.getPrecioFinal();
     }
 
     public String getNombre() {

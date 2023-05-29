@@ -31,6 +31,7 @@ public class DarAltaPrimController extends ViewController{
 
     
     /** 
+     * Este método se encarga de llamar al controlador y de cambiar de vista, a la vista de dar alta escultura
      * @param event
      * @throws Exception
      */
@@ -40,7 +41,8 @@ public class DarAltaPrimController extends ViewController{
     }
 
     
-    /** 
+    /**      
+    * Este método se encarga de llamar al controlador y de cambiar de vista, a la vista de dar alta pintura
      * @param event
      * @throws Exception
      */
@@ -51,7 +53,8 @@ public class DarAltaPrimController extends ViewController{
 
     
     /** 
-     * @param event
+    * Este método se encarga de llamar al controlador y de cambiar de vista, a la vista del menú 
+    * @param event
      * @throws Exception
      */
     @FXML
@@ -59,10 +62,6 @@ public class DarAltaPrimController extends ViewController{
         galeriaController.cargarVista(Vistas.VIEW_MENU.getRuta());
     }
 
-    
-    /** 
-     * @param lista
-     */
     @Override
     public void init(List<Obra> lista) {
         

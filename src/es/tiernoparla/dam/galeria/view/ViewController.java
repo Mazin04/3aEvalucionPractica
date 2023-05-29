@@ -18,6 +18,10 @@ public abstract class ViewController {
         this.galeriaController = controller;
     }
 
+    /**
+     * Este método de encarga de inicializar la colección de los datos, o los objetos que se necesiten según la vista, se configura según la necesidad de la vista
+     * @param lista
+     */
     public abstract void init(List<Obra> lista);
     
 }

@@ -130,7 +130,7 @@ package es/tiernoparla/dam/galeria/model{
     }
     class Autor {
         -id: int
-        -nautor: String
+        -nAutor: String
         -anoNacimiento: int
         -estilo: String
         +Autor() //Constructor

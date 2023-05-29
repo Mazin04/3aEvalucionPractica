@@ -23,6 +23,15 @@ import javafx.stage.Stage;
  * Controlador de la vista menú
  */
 public class MenuController extends ViewController{
+
+    private static final String RUTA_ICONO = "file:img/logo-transparente-verde.png";
+    private static final String RUTA_LOGO = "file:img/photo.png";
+    private static final String IMPORTANTE = "Importante";
+    private static final String LIMIT_IMPORT = "Ya se ha importado una vez, no se puede importar más";
+    private static final String IMPORT_CORRECTO = "Se ha importado correctamente";
+    private static final String ERROR_EXPORT = "Error al exportar el archivo: ";
+    private static final String EXPORT_CORRECTO = "Se ha exportado correctamente. Nombre del fichero: Obras.txt";
+    private static final String NOMBRE_ARCHIVO = "Obras.txt";
     private static int contador = 0;
 
     @FXML
@@ -50,15 +59,15 @@ public class MenuController extends ViewController{
      */
     @FXML
     void exportar(MouseEvent event) throws Exception {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("Obras.txt"))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(NOMBRE_ARCHIVO))) {
             List<Obra> obras = galeriaController.obtenerObras();
             for (Obra obra : obras) {
                 String objectData = getObjectData(obra);
                 writer.println(objectData);
             }
-            mostrarAviso("Se ha exportado correctamente. Nombre del fichero: Obras.txt", AlertType.INFORMATION);
+            mostrarAviso(EXPORT_CORRECTO, AlertType.INFORMATION);
         } catch (IOException e) {
-            mostrarAviso("Error al exportar el archivo: " + e.getMessage(), AlertType.ERROR);
+            mostrarAviso(ERROR_EXPORT + e.getMessage(), AlertType.ERROR);
         }
     }
 
@@ -80,10 +89,10 @@ public class MenuController extends ViewController{
     void importar(MouseEvent event) throws Exception {
         if (contador == 0){
             galeriaController.importar();
-            mostrarAviso("Se ha importado correctamente", AlertType.CONFIRMATION);
+            mostrarAviso(IMPORT_CORRECTO, AlertType.INFORMATION);
             contador++;
         } else if (contador != 0){
-            mostrarAviso("Ya se ha importado una vez, no se puede importar más", AlertType.INFORMATION);
+            mostrarAviso(LIMIT_IMPORT, AlertType.INFORMATION);
         }
     }
 
@@ -120,10 +129,6 @@ public class MenuController extends ViewController{
         galeriaController.cargarVista(Vistas.VIEW_MODIFICAR.getRuta());
     }
 
-    
-    /** 
-     * @param lista
-     */
     @Override
     public void init(List<Obra> lista) {
     }
@@ -132,16 +137,16 @@ public class MenuController extends ViewController{
     /** 
      * @param msg
      * @param tipo
-     * 
+     * Método al que se le pasa un mensaje para mostrar una alerta que lo contenga y además se le pasa el tipo de la alerta.
      */
     private void mostrarAviso(String msg, AlertType tipo){
         Alert alerta = new Alert(tipo);
         alerta.setHeaderText(null);
-        alerta.setTitle("Importante");
+        alerta.setTitle(IMPORTANTE);
         alerta.setContentText(msg);
-        alerta.setGraphic(new ImageView("file:img/photo.png"));
+        alerta.setGraphic(new ImageView(RUTA_LOGO));
         Stage stage = (Stage)alerta.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image("file:img/logo-transparente-verde.png"));
+        stage.getIcons().add(new Image(RUTA_ICONO));
         alerta.showAndWait();
     }
 }
