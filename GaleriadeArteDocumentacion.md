@@ -639,6 +639,106 @@ Según estos datos, se pueden tener los siguientes casos de prueba para estos m�
 
 Implementadas con JUnit en la clase ObraTest. Las 12 pruebas realizadas a los métodos getPrecioFinalPic y getPrecioFinalEsc han sido correctas.
 
+# Base de Datos
+
+## Modelo ER
+
+**Modelo Lógico**:
+![](img/Logico.png)
+
+**Modelo Relacional**:
+![](img/Relacional.png)
+
+## Creación de Tablas y vistas
+
+### Creación tabla AUTOR
+```sql
+CREATE TABLE "AUTOR" (
+	"ID_AUTOR"	NUMERIC,
+	"N_AUTOR"	TEXT NOT NULL,
+	"ANO_NAC"	NUMERIC NOT NULL,
+	"ESTILO"	TEXT NOT NULL,
+	CHECK("ANO_NAC" <= 2023),
+	PRIMARY KEY("ID_AUTOR")
+)
+```
+### Creación tabla GALERIA
+```sql
+CREATE TABLE "GALERIA" (
+	"N_GALERIA"	TEXT,
+	"UBICACION"	TEXT NOT NULL,
+	PRIMARY KEY("N_GALERIA")
+)
+```
+### Creación tabla OBRA
+```sql
+CREATE TABLE "OBRA" (
+	"ID_OBRA"	NUMERIC,
+	"N_OBRA"	TEXT NOT NULL,
+	"ID_AUTOR"	NUMERIC,
+	"TIPO"	TEXT CHECK("TIPO" IN ('Pictórica', 'Escultura')),
+	"PRECIO"	NUMERIC NOT NULL,
+	"ALTURA"	NUMERIC NOT NULL,
+	"PESO"	REAL NOT NULL,
+	"N_PIEZAS"	NUMERIC NOT NULL,
+	"DESCRIPCION"	TEXT NOT NULL,
+	"GALERIA"	TEXT,
+	FOREIGN KEY("GALERIA") REFERENCES "GALERIA"("N_GALERIA"),
+	FOREIGN KEY("ID_AUTOR") REFERENCES "AUTOR"("ID_AUTOR"),
+	PRIMARY KEY("ID_OBRA")
+)
+```
+### Creación tabla PINTURA (ES LO MISMO QUE PICTÓRICA)
+```sql
+CREATE TABLE PINTURA(
+    ID_OBRA NUMERIC,
+    TECNICA TEXT NOT NULL,
+    FOREIGN KEY (ID_OBRA) REFERENCES OBRA (ID_OBRA)
+    ON DELETE CASCADE
+)
+```
+### Creación tabla ESCULTURA
+```sql
+CREATE TABLE ESCULTURA(
+    ID_OBRA NUMERIC,
+    MATERIAL TEXT NOT NULL,
+    FOREIGN KEY (ID_OBRA) REFERENCES OBRA (ID_OBRA)
+    ON DELETE CASCADE
+)
+```
+### Vistas
+Para mostrar todos los datos de las tablas hemos creado una vista
+```sql
+CREATE VIEW VISTA_OBRAS AS
+SELECT O.ID_OBRA, O.N_OBRA, O.TIPO, 
+       CASE
+           WHEN O.TIPO = 'Escultura' THEN E.MATERIAL
+           WHEN O.TIPO = 'Pictórica' THEN P.TECNICA
+		   ELSE NULL
+       END AS DETALLE,
+	   A.N_AUTOR, O.PRECIO, O.ALTURA, O.PESO, O.N_PIEZAS, O.DESCRIPCION, G.N_GALERIA
+FROM OBRA O, AUTOR A, GALERIA G
+LEFT JOIN ESCULTURA E ON O.ID_OBRA = E.ID_OBRA AND O.TIPO = 'Escultura'
+LEFT JOIN PINTURA P ON O.ID_OBRA = P.ID_OBRA AND O.TIPO = 'Pictórica'
+WHERE O.ID_AUTOR = A.ID_AUTOR AND O.GALERIA = G.N_GALERIA
+```
+Se deberá crear una vista para cada sede: número de obras expuestas y el valor de las obras porque así lo requiere la agencia de seguros...
+```sql
+CREATE VIEW VISTA_SEDES
+AS
+SELECT N_GALERIA as Galeria, COUNT(ID_OBRA) AS 'Numero de obras',  SUM(PRECIO) AS 'Precio total'
+FROM galeria g, obra o
+WHERE O.GALERIA = G.N_GALERIA
+GROUP BY N_GALERIA
+```
+Ejemplo de su funcionamiento:
+![](img/VISTA_SEDE.png)
+
+Se adjunta además el script usado para la creación de las tablas.
+
+# Lenguaje de Marcas
+
+Toda la documentación se encuentra en el fichero zip llamado XMLPRACTICA
 # Workstation
 
 **Sistema operativo:** Windows 11.
@@ -661,5 +761,4 @@ Implementadas con JUnit en la clase ObraTest. Las 12 pruebas realizadas a los m�
 
 **Prototipos:** diseñados con Pencil.
 **Interfaz gráfica:** desarrollada e implementada con SceneBuilder y JavaFX.
-
 **Pruebas**: JUnit 5.

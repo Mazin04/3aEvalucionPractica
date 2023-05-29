@@ -170,9 +170,9 @@ public class SQLiteXMLGaleriaDAO{
     public void add(Galeria galeria) throws SQLException {
         final String sqlComprobar = "SELECT N_GALERIA FROM GALERIA WHERE N_GALERIA = ?";
         PreparedStatement psComp = conn.prepareStatement(sqlComprobar);
-        ResultSet rs = psComp.executeQuery();
         psComp.setString(1, galeria.getNombre());
-        if(rs.getString("N_GALERIA") != null){
+        ResultSet rs = psComp.executeQuery();
+        if(rs.next() == false){
             final String sqlGal = "INSERT INTO GALERIA VALUES(?, ?)";
             PreparedStatement psGal = conn.prepareStatement(sqlGal);
     
