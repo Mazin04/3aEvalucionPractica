@@ -45,9 +45,6 @@ public class DaraltaterceController extends ViewController{
     private TextField txfDesc;
 
     @FXML
-    private TextField txfGaleria;
-
-    @FXML
     private TextField txfMaterial;
 
     @FXML
@@ -83,7 +80,7 @@ public class DaraltaterceController extends ViewController{
      */
     @FXML
     void confirmarAlta(MouseEvent event) throws Exception {
-        if(txfNombre.getText().isBlank() || txfAutor.getText().isBlank() || txfDesc.getText().isBlank() || txfGaleria.getText().isBlank() || txfMaterial.getText().isBlank()){
+        if(txfNombre.getText().isBlank() || txfAutor.getText().isBlank() || txfDesc.getText().isBlank() || txfMaterial.getText().isBlank()){
             mostrarAviso("Se ha dejado vacío un campo/s", AlertType.ERROR);
         } else {
             try {
@@ -95,9 +92,8 @@ public class DaraltaterceController extends ViewController{
                 String material = txfMaterial.getText();
                 int numeroPiezas = Integer.parseInt(txfPiezas.getText());
                 String descripcion = txfDesc.getText();
-                String galeria = txfGaleria.getText();
             
-                Escultura escultura = new Escultura(Obra.contador, nombre, autor, precio, altura, peso, numeroPiezas, descripcion, "Escultura", galeria, material);
+                Escultura escultura = new Escultura(Obra.contador, nombre, autor, precio, altura, peso, numeroPiezas, descripcion, "Escultura", "Galeria JWD", material);
             
                 galeriaController.add(escultura);
                 this.obras.add(escultura);

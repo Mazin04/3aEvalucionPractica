@@ -78,9 +78,6 @@ public class ModificarController extends ViewController{
     private TextField txfDesc;
 
     @FXML
-    private TextField txfGaleria;
-
-    @FXML
     private TextField txfMaterial;
 
     @FXML
@@ -171,7 +168,7 @@ public class ModificarController extends ViewController{
         Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
         if(obra == null){
             mostrarAviso("Debe seleccionar un registro y luego modificarlo", AlertType.ERROR);
-        }else if(txfNombre.getText().isBlank() || txfAutor.getText().isBlank() || txfDesc.getText().isBlank() || txfGaleria.getText().isBlank() || txfMaterial.getText().isBlank()){
+        }else if(txfNombre.getText().isBlank() || txfAutor.getText().isBlank() || txfDesc.getText().isBlank() || txfMaterial.getText().isBlank()){
             mostrarAviso("Se ha dejado vacío un campo/s", AlertType.ERROR);
         }else{
             try{
@@ -200,10 +197,9 @@ public class ModificarController extends ViewController{
             Double peso = Double.parseDouble(txfPeso.getText());
             int numeroPiezas = Integer.parseInt(txfPiezas.getText());
             String desc = txfDesc.getText();
-            String galeria = txfGaleria.getText();
             String material = txfMaterial.getText();
 
-            Escultura obraMod = new Escultura(obra.getId(), nombre, autor, precio, altura, peso, numeroPiezas, desc, obra.getTipo(), galeria, material);
+            Escultura obraMod = new Escultura(obra.getId(), nombre, autor, precio, altura, peso, numeroPiezas, desc, obra.getTipo(), obra.getGaleria(), material);
             obra.setNombre(obraMod.getNombre());
             obra.setAutor(obraMod.getAutor());
             obra.setPrecio(obraMod.getPrecio());
@@ -239,10 +235,9 @@ public class ModificarController extends ViewController{
             Double peso = Double.parseDouble(txfPeso.getText());
             int numeroPiezas = Integer.parseInt(txfPiezas.getText());
             String desc = txfDesc.getText();
-            String galeria = txfGaleria.getText();
             String tecnica = txfMaterial.getText();
 
-            Pictorica obraMod = new Pictorica(obra.getId(), nombre, autor, precio, altura, peso, numeroPiezas, desc, obra.getTipo(), galeria, tecnica);
+            Pictorica obraMod = new Pictorica(obra.getId(), nombre, autor, precio, altura, peso, numeroPiezas, desc, obra.getTipo(), obra.getGaleria(), tecnica);
             obra.setNombre(obraMod.getNombre());
             obra.setAutor(obraMod.getAutor());
             obra.setPrecio(obraMod.getPrecio());
@@ -250,7 +245,6 @@ public class ModificarController extends ViewController{
             obra.setPeso(obraMod.getPeso());
             obra.setNumeroPiezas(obraMod.getNumeroPiezas());
             obra.setDescripcion(obraMod.getDescripcion());
-            obra.setGaleria(obraMod.getGaleria());
             obra.setTecnica(obraMod.getTecnica());
 
             galeriaController.modify(obra);
@@ -301,7 +295,6 @@ public class ModificarController extends ViewController{
         this.txfMaterial.setText(obra.getMaterial());
         this.txfPiezas.setText(String.valueOf(obra.getNumeroPiezas()));
         this.txfDesc.setText(obra.getDescripcion());
-        this.txfGaleria.setText(obra.getGaleria());
     }
 
 
@@ -318,7 +311,6 @@ public class ModificarController extends ViewController{
         this.txfMaterial.setText(obra.getTecnica());
         this.txfPiezas.setText(String.valueOf(obra.getNumeroPiezas()));
         this.txfDesc.setText(obra.getDescripcion());
-        this.txfGaleria.setText(obra.getGaleria());
     }
 
     

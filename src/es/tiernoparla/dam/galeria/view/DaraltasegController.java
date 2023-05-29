@@ -44,9 +44,6 @@ public class DaraltasegController extends ViewController{
     private TextField txfDesc;
 
     @FXML
-    private TextField txfGaleria;
-
-    @FXML
     private TextField txfNombre;
 
     @FXML
@@ -73,7 +70,7 @@ public class DaraltasegController extends ViewController{
      */
     @FXML
     void confirmarAlta(MouseEvent event) throws Exception {
-        if(txfNombre.getText().isBlank() || txfAutor.getText().isBlank() || txfDesc.getText().isBlank() || txfGaleria.getText().isBlank() || txfTecnica.getText().isBlank()){
+        if(txfNombre.getText().isBlank() || txfAutor.getText().isBlank() || txfDesc.getText().isBlank() || txfTecnica.getText().isBlank()){
             mostrarAviso("Se ha dejado vacío un campo/s", AlertType.ERROR);
         } else {
             try {
@@ -85,9 +82,8 @@ public class DaraltasegController extends ViewController{
                 String tecnica = txfTecnica.getText();
                 int numeroPiezas = Integer.parseInt(txfPiezas.getText());
                 String descripcion = txfDesc.getText();
-                String galeria = txfGaleria.getText();
 
-                Pictorica pintura = new Pictorica(Obra.contador, nombre, autor, precio, altura, peso, numeroPiezas, descripcion, "Pictórica", galeria, tecnica);
+                Pictorica pintura = new Pictorica(Obra.contador, nombre, autor, precio, altura, peso, numeroPiezas, descripcion, "Pictórica", "Galeria JWD", tecnica);
 
                 galeriaController.add(pintura);
                 this.obras.add(pintura);

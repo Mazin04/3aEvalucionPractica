@@ -17,7 +17,7 @@ Valores:
 |Peso|[0, 1]|+20|
 |Peso|(1, infinito)|+100|
 |Altura|[0, 2]|+20|
-|Altura|(2, infinito)|+100|
+|Altura|(2, infinito)|+100/pieza|
 |Num piezas|[0, 2]|0|
 |Num piezas|(2, infinito)|+10/pieza|
 |Tipo Pintura|-|-10%|

@@ -163,16 +163,22 @@ public class SQLiteXMLGaleriaDAO{
      * @throws SQLException
      */
     public void add(Galeria galeria) throws SQLException {
-        final String sqlGal = "INSERT INTO GALERIA VALUES(?, ?)";
-        PreparedStatement psGal = conn.prepareStatement(sqlGal);
-
-        psGal.setString(1, galeria.getNombre());
-        psGal.setString(2, galeria.getUbicacion());
-        psGal.addBatch();
-        conn.setAutoCommit(false);
-        psGal.executeBatch();
-        conn.setAutoCommit(true);
-        psGal.close();
+        final String sqlComprobar = "SELECT N_GALERIA FROM GALERIA WHERE N_GALERIA = ?";
+        PreparedStatement psComp = conn.prepareStatement(sqlComprobar);
+        ResultSet rs = psComp.executeQuery();
+        psComp.setString(1, galeria.getNombre());
+        if(rs.getString("N_GALERIA") != null){
+            final String sqlGal = "INSERT INTO GALERIA VALUES(?, ?)";
+            PreparedStatement psGal = conn.prepareStatement(sqlGal);
+    
+            psGal.setString(1, galeria.getNombre());
+            psGal.setString(2, galeria.getUbicacion());
+            psGal.addBatch();
+            conn.setAutoCommit(false);
+            psGal.executeBatch();
+            conn.setAutoCommit(true);
+            psGal.close();
+        }
     }
 
     

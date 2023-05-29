@@ -60,7 +60,7 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         return lista;
     }
 
-    
+
     /** 
      * @param obra
      * @throws Exception

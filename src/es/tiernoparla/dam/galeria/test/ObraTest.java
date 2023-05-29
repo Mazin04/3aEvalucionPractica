@@ -4,13 +4,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import es.tiernoparla.dam.galeria.model.Escultura;
-import es.tiernoparla.dam.galeria.model.Obra;
 import es.tiernoparla.dam.galeria.model.Pictorica;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ObraTest {
-    Obra obra = null;
     int precio = 100;
     double delta = 0.1;
 

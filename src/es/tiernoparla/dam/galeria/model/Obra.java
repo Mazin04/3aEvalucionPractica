@@ -53,7 +53,7 @@ public abstract class Obra {
         String MSG_NUMPIEZAS = "   Número de piezas: " + numeroPiezas;
         String MSG_DESCRIPCION = "   Descripción: " + descripcion;
         String MSG_TIPO = "   Tipo: " + tipo;
-        String MSG_GALERIA = "   GALERIA: " + galeria;
+        String MSG_GALERIA = "   Galeria: " + galeria;
         
         return MSG_NOMBRE + "\n" + MSG_ID + "\n" + MSG_TIPO + "\n" + MSG_AUTOR + "\n" + MSG_PRECIO + "\n" + MSG_ALTURA + "\n" + MSG_PESO + "\n" + MSG_NUMPIEZAS + "\n" + MSG_DESCRIPCION + "\n" + MSG_GALERIA;
     }
