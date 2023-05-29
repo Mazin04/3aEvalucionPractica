@@ -42,10 +42,18 @@ public class SAXPictorica extends DefaultHandler{
     private boolean inPictorica = false;
     private boolean pictoricaTerminada = false;
 
+    /**
+     * Generación del Acceso a objetos para posteriormente poder agregarlos a la bbdd
+     * @param dao
+     */
     public void setDao(SQLiteXMLGaleriaDAO dao) {
         this.dao = dao;
     }
 
+    /**
+     * Mediante un for each, busca todas las obras pictóricas en la arraylist, y la agrega las obras pictóricas a la bbdd
+     * @throws Exception
+     */
     public void addPictorica() throws Exception{
         for (Pictorica pictorica : pictorica) {
             dao.add(pictorica);

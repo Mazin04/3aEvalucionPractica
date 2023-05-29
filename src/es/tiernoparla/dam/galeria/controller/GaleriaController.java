@@ -31,6 +31,11 @@ import javafx.stage.Stage;
  */
 public class GaleriaController extends Application{
 
+    private static final String AVISO_CIERRE2 = "¿Seguro que quieres cerrar el programa?";
+    private static final String AVISO_CERRAR = "Estás a punto de cerrar el programa";
+    private static final String CERRAR = "Cerrar Aplicación";
+    private static final String TITULO = "Galeria JDWS";
+    private static final String LOGO = "file:img/logo-transparente-verde.png";
     private GaleriaDAO dao;
     private GaleriaXMLDAO daoX;
     private static Stage currentStage;
@@ -67,9 +72,9 @@ public class GaleriaController extends Application{
      */
     private void cerrar(Stage stage) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Cerrar Aplicación");
-        alert.setHeaderText("Estás a punto de cerrar el programa");
-        alert.setContentText("¿Seguro que quieres cerrar el programa?");
+        alert.setTitle(CERRAR);
+        alert.setHeaderText(AVISO_CERRAR);
+        alert.setContentText(AVISO_CIERRE2);
 
         if(alert.showAndWait().get() == ButtonType.OK){
             stage.close();
@@ -81,7 +86,7 @@ public class GaleriaController extends Application{
      * @param ficheroView
      * @return ViewController
      * @throws Exception
-     * Carga la vista desde el fichero y devuelve el controlador de la vista que ya está cargada
+     * Carga la vista desde el fichero y devuelve el controlador de la vista que ya está cargada, además les prohibe modificar el tamaño de la vista y le añade un icono.
      */
     public ViewController cargarVista(String ficheroView) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(ficheroView));
@@ -94,8 +99,8 @@ public class GaleriaController extends Application{
 
         currentStage.setScene(scene);
         currentStage.resizableProperty().setValue(false);
-        currentStage.getIcons().add(new Image("file:img/logo-transparente-verde.png"));
-        currentStage.setTitle("Galeria JDWS");
+        currentStage.getIcons().add(new Image(LOGO));
+        currentStage.setTitle(TITULO);
         currentStage.show();
         viewController.init(obtenerObras());
         return viewController;
@@ -106,7 +111,7 @@ public class GaleriaController extends Application{
      * @param obra
      * @return List<Obra>
      * @throws Exception
-     * Acceso a datos
+     * Acceso a datos que agrega la obra pictórica y retorna el conjunto de obras
      */
     public List<Obra> add(Pictorica obra) throws Exception{
         dao.add(obra);
@@ -118,7 +123,7 @@ public class GaleriaController extends Application{
      * @param obra
      * @return List<Obra>
      * @throws Exception
-     * Acceso a datos
+     * Acceso a datos que agrega la obra escultura y retorna el conjunto de obras
      */
     public List<Obra> add(Escultura obra) throws Exception{
         dao.add(obra);
@@ -130,7 +135,7 @@ public class GaleriaController extends Application{
      * @param obra
      * @return List<Obra>
      * @throws Exception
-     * Modificación de datos
+     * Modificación de datos de las obras
      */
     public List<Obra> modify(Escultura obra) throws Exception{
         dao.modify(obra);
@@ -142,7 +147,7 @@ public class GaleriaController extends Application{
      * @param obra
      * @return List<Obra>
      * @throws Exception
-     * Modificación de datos
+     * Modificación de datos que van a las obras
      */
     public List<Obra> modify(Pictorica obra) throws Exception{
         dao.modify(obra);
@@ -153,7 +158,7 @@ public class GaleriaController extends Application{
     /** 
      * @return List<Obra>
      * @throws Exception
-     * Acceso a datos
+     * Acceso a datos, que recupera las obras
      */
     public List<Obra> obtenerObras() throws Exception{
         return dao.obtenerObras();
@@ -162,7 +167,7 @@ public class GaleriaController extends Application{
     
     /** 
      * @throws Exception
-     * 
+     * Accede al xml e importa en la BBDD los datos de las obras en ellos.
      */
     public void importar() throws Exception{
         daoX.importar();

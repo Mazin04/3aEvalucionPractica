@@ -28,6 +28,7 @@ public class SQLiteXMLGaleriaDAO{
 
     
     /** 
+     * Creación de la conexión con la base de datos
      * @return Connection
      * @throws SQLException
      */
@@ -39,6 +40,7 @@ public class SQLiteXMLGaleriaDAO{
 
     
     /** 
+     * Agrega el autor pasado por parámetro a la base de datos
      * @param autor
      * @throws SQLException
      */
@@ -65,7 +67,8 @@ public class SQLiteXMLGaleriaDAO{
     }
 
     
-    /** 
+    /**
+     * Agrega la escultura pasada por parámetro a la base de datos
      * @param escultura
      * @throws Exception
      */
@@ -112,6 +115,7 @@ public class SQLiteXMLGaleriaDAO{
 
     
     /** 
+     * Agrega la obra pictórica pasada por parámetro a la base de datos
      * @param pictorica
      * @throws Exception
      */
@@ -159,6 +163,7 @@ public class SQLiteXMLGaleriaDAO{
     
     
     /** 
+     * Agrega la galería pasada por parámetro a la base de datos
      * @param galeria
      * @throws SQLException
      */
@@ -183,6 +188,7 @@ public class SQLiteXMLGaleriaDAO{
 
     
     /** 
+     * Obtiene el id del autor en función a su nombre, comprueba si existe en la bbdd, y si no existe la crea en la bbdd
      * @param obra
      * @return int
      * @throws SQLException
@@ -194,10 +200,10 @@ public class SQLiteXMLGaleriaDAO{
         PreparedStatement psA = conn.prepareStatement(sqlIDAutor);
         psA.setString(1, obra.getAutor());
         ResultSet rsA = psA.executeQuery();
-        int idAutor;
+        int idAutor = rsA.getInt("ID_AUTOR"); 
 
         //Si no retorna nada, genera un nuevo autor
-        if(rsA.getInt("ID_AUTOR") == 0){
+        if(idAutor == 0){
             final String sqlID = "SELECT MAX(ID_AUTOR) FROM AUTOR";
             PreparedStatement psID = conn.prepareStatement(sqlID);
             ResultSet rsID = psID.executeQuery();
@@ -215,6 +221,7 @@ public class SQLiteXMLGaleriaDAO{
 
     
     /** 
+     * Crea un autor medianto los atributos pasados de la obra, y otros como el estilo y el año que son autogenerados
      * @param obra
      * @param idAutor
      * @throws SQLException

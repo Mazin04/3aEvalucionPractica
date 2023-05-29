@@ -23,10 +23,17 @@ public class SAXGaleria extends DefaultHandler{
     private boolean inGaleria = false;
     private boolean galeriaTerminada = false;
 
+    /**
+     * Generación del Acceso a objetos para posteriormente poder agregarlos a la bbdd
+     * @param dao
+     */
     public void setDao(SQLiteXMLGaleriaDAO dao) {
         this.dao = dao;
     }
-
+    /**
+     * Mediante un for each, busca todas las galerías en la arraylist, y la agrega las galerías a la bbdd
+     * @throws Exception
+     */
     public void addGaleria() throws Exception{
         for (Galeria galeria : galerias) {
             dao.add(galeria);

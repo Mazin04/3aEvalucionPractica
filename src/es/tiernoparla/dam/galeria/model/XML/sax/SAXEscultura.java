@@ -43,10 +43,18 @@ public class SAXEscultura extends DefaultHandler{
     private boolean inEscultura = false;
     private boolean esculturaTerminada = false;
 
+    /**
+     * Generación del Acceso a objetos para posteriormente poder agregarlos a la bbdd
+     * @param dao
+     */
     public void setDao(SQLiteXMLGaleriaDAO dao) {
         this.dao = dao;
     }
 
+    /**
+     * Mediante un for each, busca todas las obras en la arraylist, y la agrega las esculturas a la bbdd
+     * @throws Exception
+     */
     public void addEscultura() throws Exception{
         for (Escultura escultura : esculturas) {
             dao.add(escultura);

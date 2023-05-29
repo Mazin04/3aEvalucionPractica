@@ -18,6 +18,7 @@ public class Escultura extends Obra {
 
     
     /** 
+     * Devuelve en el formato adecuado las características de una escultura
      * @return String
      */
     @Override
@@ -28,6 +29,7 @@ public class Escultura extends Obra {
 
     
     /** 
+     * Obtiene el precio final incluyendo el cálculo de descuentos de una escultura
      * @return double
      */
     public double getPrecioFinalEsc(){
@@ -44,6 +46,7 @@ public class Escultura extends Obra {
 
     
     /** 
+     * Obtiene el mensaje con las características únicas de una escultura
      * @return String
      */
     public String imprimirPrecioEsc() {
@@ -51,7 +54,9 @@ public class Escultura extends Obra {
     }
 
     
-    /** 
+
+    /**
+     * Cálculo del descuento que se aplica a las esculturas (20%)
      * @return double
      */
     public double getDescuento() {

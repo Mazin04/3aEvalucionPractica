@@ -19,6 +19,24 @@ import es.tiernoparla.dam.galeria.model.Pictorica;
  * @version 1.0
  */
 public class SQLiteGaleriaDAO implements GaleriaDAO{
+    private static final int MAX_RANDOM_NUM = 2023;
+    private static final String UTF_8 = "UTF-8";
+    private static final int UNO = 1;
+    private static final String MAX_ID_AUTOR = "MAX(ID_AUTOR)";
+    private static final String ID_AUTOR = "ID_AUTOR";
+    private static final String MAX_ID_OBRA = "MAX(ID_OBRA)";
+    private static final String DETALLE = "DETALLE";
+    private static final String N_GALERIA = "N_GALERIA";
+    private static final String DESCRIPCION = "DESCRIPCION";
+    private static final String N_PIEZAS = "N_PIEZAS";
+    private static final String PESO = "PESO";
+    private static final String ALTURA = "ALTURA";
+    private static final String PRECIO = "PRECIO";
+    private static final String N_AUTOR = "N_AUTOR";
+    private static final String N_OBRA = "N_OBRA";
+    private static final String ID_OBRA = "ID_OBRA";
+    private static final String TIPO = "TIPO";
+    private static final String PICTÓRICA = "Pictórica";
     private static final String URL = "jdbc:sqlite:galeria.db";
     private static final String USER = "system";
     private static final String PASSWORD = "system";
@@ -30,6 +48,7 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
 
     
     /** 
+     * Genera una conexion a la BBDD
      * @return Connection
      * @throws SQLException
      */
@@ -39,11 +58,6 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         return conn;
     }
 
-    
-    /** 
-     * @return List<Obra>
-     * @throws Exception
-     */
     @Override
     public List<Obra> obtenerObras() throws Exception {
         List<Obra> lista = new ArrayList<Obra>();
@@ -51,20 +65,15 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         PreparedStatement ps = conn.prepareStatement(query);
         ResultSet rs = ps.executeQuery();
         while(rs.next()) {
-            if(rs.getString("TIPO").equals("Pictórica")){
-                lista.add(new Pictorica(rs.getInt("ID_OBRA"), rs.getString("N_OBRA"), rs.getString("N_AUTOR"), rs.getDouble("PRECIO"), rs.getDouble("ALTURA"), rs.getDouble("PESO"), rs.getInt("N_PIEZAS"), rs.getString("DESCRIPCION"), rs.getString("TIPO"), rs.getString("N_GALERIA"), rs.getString("DETALLE")));
+            if(rs.getString(TIPO).equals(PICTÓRICA)){
+                lista.add(new Pictorica(rs.getInt(ID_OBRA), rs.getString(N_OBRA), rs.getString(N_AUTOR), rs.getDouble(PRECIO), rs.getDouble(ALTURA), rs.getDouble(PESO), rs.getInt(N_PIEZAS), rs.getString(DESCRIPCION), rs.getString(TIPO), rs.getString(N_GALERIA), rs.getString(DETALLE)));
             } else {
-                lista.add(new Escultura(rs.getInt("ID_OBRA"), rs.getString("N_OBRA"), rs.getString("N_AUTOR"), rs.getDouble("PRECIO"), rs.getDouble("ALTURA"), rs.getDouble("PESO"), rs.getInt("N_PIEZAS"), rs.getString("DESCRIPCION"), rs.getString("TIPO"), rs.getString("N_GALERIA"), rs.getString("DETALLE")));
+                lista.add(new Escultura(rs.getInt(ID_OBRA), rs.getString(N_OBRA), rs.getString(N_AUTOR), rs.getDouble(PRECIO), rs.getDouble(ALTURA), rs.getDouble(PESO), rs.getInt(N_PIEZAS), rs.getString(DESCRIPCION), rs.getString(TIPO), rs.getString(N_GALERIA), rs.getString(DETALLE)));
             }
         }
         return lista;
     }
 
-
-    /** 
-     * @param obra
-     * @throws Exception
-     */
     @Override
     public void add(Pictorica obra) throws Exception {
         int idAutor = obtenerIDAut(obra);
@@ -72,7 +81,7 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         final String sqlID = "SELECT MAX(ID_OBRA) FROM OBRA";
         PreparedStatement psID = conn.prepareStatement(sqlID);
         ResultSet rsID = psID.executeQuery();
-        int idObra = rsID.getInt("MAX(ID_OBRA)") + 1;
+        int idObra = rsID.getInt(MAX_ID_OBRA) + UNO;
         rsID.close();
 
         final String sql = "INSERT INTO OBRA VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -107,11 +116,6 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         psPic.close();
     }
 
-    
-    /** 
-     * @param obra
-     * @throws Exception
-     */
     @Override
     public void add(Escultura obra) throws Exception {
         int idAutor = obtenerIDAut(obra);
@@ -119,7 +123,7 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         final String sqlID = "SELECT MAX(ID_OBRA) FROM OBRA";
         PreparedStatement psID = conn.prepareStatement(sqlID);
         ResultSet rsID = psID.executeQuery();
-        int idObra = rsID.getInt("MAX(ID_OBRA)") + 1;
+        int idObra = rsID.getInt(MAX_ID_OBRA) + 1;
         rsID.close();
 
         final String sql = "INSERT INTO OBRA VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -156,31 +160,36 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
 
     
     /** 
+     * Obtiene el id del autor en función a su nombre, comprueba si existe en la bbdd, y si no existe la crea en la bbdd
      * @param obra
      * @return int
      * @throws SQLException
      */
     private int obtenerIDAut(Obra obra) throws SQLException {
 
-        //Obtener el id del autor que coincida con el nombre introducido
+        /**
+         * Obtener el id del autor que coincida con el nombre introducido
+         **/
         final String sqlIDAutor = "SELECT ID_AUTOR FROM AUTOR WHERE N_AUTOR = ?";
         PreparedStatement psA = conn.prepareStatement(sqlIDAutor);
         psA.setString(1, obra.getAutor());
         ResultSet rsA = psA.executeQuery();
         int idAutor;
 
-        //Si no retorna nada, genera un nuevo autor
-        if(rsA.getInt("ID_AUTOR") == 0){
+        /**
+         * Si no retorna nada, genera un nuevo autor
+         **/
+        if(rsA.getInt(ID_AUTOR) == 0){
             final String sqlID = "SELECT MAX(ID_AUTOR) FROM AUTOR";
             PreparedStatement psID = conn.prepareStatement(sqlID);
             ResultSet rsID = psID.executeQuery();
-            idAutor = rsID.getInt("MAX(ID_AUTOR)") + 1;
+            idAutor = rsID.getInt(MAX_ID_AUTOR) + 1;
             rsID.close();
 
             crearAutor((Obra)obra, idAutor);
             return idAutor;
         } else {
-            idAutor = rsA.getInt("ID_AUTOR");
+            idAutor = rsA.getInt(ID_AUTOR);
             rsA.close();
             return idAutor;
         }
@@ -188,6 +197,7 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
 
     
     /** 
+     * Crea un objeto autor con el id que se le pasa
      * @param obra
      * @param idAutor
      * @throws SQLException
@@ -196,11 +206,11 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         //Estilo aleatorio
         byte[] array = new byte[7];
         new Random().nextBytes(array);
-        String estilo = new String(array, Charset.forName("UTF-8"));
+        String estilo = new String(array, Charset.forName(UTF_8));
 
         //Fecha nacimiento aleatoria
         Random randomAno = new Random();
-        int anoNac = randomAno.nextInt(2023);
+        int anoNac = randomAno.nextInt(MAX_RANDOM_NUM);
         anoNac = anoNac+1;
 
         final String sqlNAut = "INSERT INTO AUTOR VALUES (?, ?, ?, ?)";

@@ -26,10 +26,17 @@ public class SAXAutor extends DefaultHandler{
     private boolean inAutor = false;
     private boolean autorTerminado = false;
 
+    /**
+     * Generación del Acceso a objetos para posteriormente poder agregarlos a la bbdd
+     * @param dao
+     */
     public void setDao(SQLiteXMLGaleriaDAO dao) {
         this.dao = dao;
     }
-
+    /**
+     * Mediante un for each, busca todas los autores en la arraylist, y la agrega los autores a la bbdd
+     * @throws Exception
+     */
     public void addAutor() throws Exception{
         for (Autor autor : autores) {
             dao.add(autor);

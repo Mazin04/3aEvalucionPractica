@@ -40,6 +40,7 @@ public abstract class Obra {
 
     
     /** 
+     * Devuelve en un formato adecuado las características de una obra
      * @return String
      */
     @Override
@@ -60,6 +61,7 @@ public abstract class Obra {
 
     
     /** 
+     * Devuelve con cierto formato 3 características de una obra
      * @return String
      */
     public String imprimirEtiqueta(){
@@ -71,6 +73,7 @@ public abstract class Obra {
 
     
     /** 
+     * Obtiene mediante otros métodos, el precio final de todas las obras y los suma
      * @return double
      */
     public double getPrecioFinal(){
@@ -84,9 +87,10 @@ public abstract class Obra {
 
     
     /** 
+     * Genera ese 25% extra de precio causado por la comisión
      * @return double
      */
-    public double obtenerComision() {
+    private double obtenerComision() {
         final double INCREMENTO = 0.25;
         double precioComision = this.getPrecio()*INCREMENTO; //Comision Galeria
         return precioComision;
@@ -94,24 +98,29 @@ public abstract class Obra {
 
     
     /** 
+     * Obtiene el coste adicional por cada pieza extra a partir de la segunda (sin incluir)
      * @return double
      */
-    public double obtenerPiezas() {
+    private double obtenerPiezas() {
         final int FORPRECIO = 2;
         final int PRECIOADICIONAL = 10;
         final int PIEZAMINIMA = 2;
         double precioPiezas = 0;
-        for (int i = FORPRECIO; i<=this.getNumeroPiezas(); i++){ //Coste de 10€ por pieza adicional, a partir de 2 piezas
-            precioPiezas = PRECIOADICIONAL * (this.getNumeroPiezas() - PIEZAMINIMA);
+        if(this.getNumeroPiezas()>2){
+            for (int i = FORPRECIO; i<=this.getNumeroPiezas(); i++){ //Coste de 10€ por pieza adicional, a partir de 2 piezas
+                precioPiezas = PRECIOADICIONAL * (this.getNumeroPiezas() - PIEZAMINIMA);
+            }
+            return precioPiezas;
         }
         return precioPiezas;
     }
 
     
     /** 
+     * Obtienes un mensaje indicando el número de la pieza adicional y su coste
      * @return String
      */
-    public String obtenerMsgPiezas(){
+    private String obtenerMsgPiezas(){
         String msg ="";
         if(this.getNumeroPiezas() > 2){
             for (int i = 3; i <= (this.getNumeroPiezas()); i++) {
@@ -123,9 +132,10 @@ public abstract class Obra {
 
     
     /** 
+     * Obtienes el precio por la altura de la obra, si la altura es mayor a 2 se cobrará 100 por cada pieza que tenga la obra, sino, se cobrará 20.
      * @return double
      */
-    public double obtenerAltura() {
+    private double obtenerAltura() {
         final int ALTURAMINIMA = 2;
         double precioAltura;
         if(this.getAltura() > ALTURAMINIMA){ //Precio por altura
@@ -138,9 +148,10 @@ public abstract class Obra {
 
     
     /** 
+     * Obtienes el preico por el peso de la obra, si el peso es mayor a 1t será de 100, sino, se cobrará 20.
      * @return double
      */
-    public double obtenerPeso() {
+    private double obtenerPeso() {
         final int PESOMINIMO = 1;
         double precioPeso;
         if(this.getPeso() > PESOMINIMO){ //Precio por peso
@@ -153,6 +164,7 @@ public abstract class Obra {
 
     
     /** 
+     * Obtienes un mensaje con las todas las características de una obra
      * @return String
      */
     public String imprimirPrecio(){

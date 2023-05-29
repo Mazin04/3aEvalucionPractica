@@ -14,6 +14,7 @@ import es.tiernoparla.dam.galeria.model.XML.sax.SAXPictorica;
 public class XMLGaleriaDAO implements GaleriaXMLDAO {
     
     /** 
+     * Metodo que parsea los xml introducidos y además, agrega su contenido a la base de datos
      * @throws Exception
      */
     @Override
