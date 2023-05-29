@@ -7,7 +7,15 @@ import es.tiernoparla.dam.galeria.model.XML.sax.SAXEscultura;
 import es.tiernoparla.dam.galeria.model.XML.sax.SAXGaleria;
 import es.tiernoparla.dam.galeria.model.XML.sax.SAXPictorica;
 
+/**
+ * @author Rubén y Dalia
+ * @version 1.0
+ */
 public class XMLGaleriaDAO implements GaleriaXMLDAO {
+    
+    /** 
+     * @throws Exception
+     */
     @Override
     public void importar() throws Exception{
         SAXParserFactory fabrica;

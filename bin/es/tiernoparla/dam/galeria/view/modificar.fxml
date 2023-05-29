@@ -70,11 +70,6 @@
             <Font name="Calibri" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="846.0" layoutY="513.0" text="Galería:" AnchorPane.rightAnchor="380.0">
-         <font>
-            <Font name="Calibri" size="17.0" />
-         </font>
-      </Label>
       <TextField fx:id="txfAutor" layoutX="918.0" layoutY="294.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
@@ -102,11 +97,6 @@
          </padding>
       </TextField>
       <TextField fx:id="txfDesc" layoutX="918.0" layoutY="481.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
-         <padding>
-            <Insets top="5.0" />
-         </padding>
-      </TextField>
-      <TextField fx:id="txfGaleria" layoutX="918.0" layoutY="511.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="918.0" AnchorPane.rightAnchor="82.0">
          <padding>
             <Insets top="5.0" />
          </padding>

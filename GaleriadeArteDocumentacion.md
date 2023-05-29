@@ -372,9 +372,208 @@ GaleriaController ..> GDA: use
 En cuanto al diagrama de clases, el diseño quedaría de la siguiente manera:
 
 ```plantuml
-@startuml diagrama de clases
+@startuml diagrama  de clases 
 
-POR IMPLEMENTAR AQUÍ
+package es/tiernoparla/dam/galeria/view{
+    
+    abstract class ViewController {
+        #galeriaController: GaleriaController
+        +setGaleriaController(GaleriaController controller): void
+        +init(List<Obra> lista): void
+    }
+
+    class DarAltaPrimController extends ViewController {
+        ~irMenu(MouseEvent event): void
+        ~irAltaEscultura(MouseEvent event): void
+        ~irAltaPintura(MouseEvent event): void
+    }
+
+    class DarAltasegController extends ViewController {
+        -obras: ObservableList<Obra> 
+        ~confirmarAlta(MouseEvent event): void
+        ~mostrarAviso(String msg, AlertType tipo): void
+        ~irMenu(MouseEvent event): void
+    }
+
+    class DarAltaterceController extends ViewController {
+        ~confirmarAlta(MouseEvent event): void
+        ~mostrarAviso(String msg, AlertType tipo): void
+        ~irMenu(MouseEvent event): void
+    }
+
+    class ExposicionController extends ViewController {
+        +initialize(): void
+        ~irMenu(MouseEvent event): void
+    }
+
+    class MenuController extends ViewController {
+        ~irDarAlta(MouseEvent event): void
+        ~irExposicion(MouseEvent event): void
+        ~irSeleccionar(MouseEvent event): void
+        ~exportar(MouseEvent event): void
+        ~mostrarAviso(String msg, AlertType tipo): void
+    }
+
+    class ModificarController extends ViewController {
+        -obras: ObservableList<Obra> 
+        +initialize(): void 
+        ~calcularPrecio(MouseEvent event): void
+        ~imprimir(MouseEvent event): void
+        ~irMenu(MouseEvent event): void
+        ~modificar(MouseEvent event): void
+        -modificarEscultura(Escultura obra): void
+        -modificarPictorica(Pictorica obra): void
+        ~visualizar(MouseEvent event): void
+        ~seleccionarObra(MouseEvent event): void
+        -copiarDatosFormularioEscultura(Escultura obra): void
+        -copiarDatosFormularioPictorica(Pictorica obra): void
+        -mostrarAviso(String msg, AlertType tipo): void
+    }
+
+    interface IVistas {
+        +VIEW_MENU: String
+        +VIEW_DARALTAUNO: String
+        +VIEW_DARALTADOS: String 
+        +VIEW_DARALTATRES: String
+        +VIEW_MODIFICAR: String 
+        +VIEW_EXPO: String 
+
+    }
+
+    ViewController .> IVistas: use
+
+}
+
+package es/tiernoparla/dam/galeria/controller{
+
+    ViewController .> GaleriaController
+
+    class GaleriaController{
+        +start(Stage stage): void
+        +cerrar(Stage stage): void
+        +cargarVista(String ficheroView): ViewController
+        +add(Pictorica obra): List<Obra>
+        +add(Escultura obra): List<Obra>
+        +modify(Escultura obra): List<Obra>
+        +modify(Pictorica obra): List<Obra>
+        +obtenerObras(): List<Obra>
+    }
+}
+
+package es/tiernoparla/dam/galeria/model{
+
+    abstract class Obra {
+        #UNIDAD_MONEDA_EUR = "EUR": String
+        #UNIDAD_ALTURA = "m": String
+        #UNIDAD_PESO = "t": String
+        +{static}contador: int
+        #nombre: String
+        #autor: String
+        #precio: double
+        #altura: double
+        #peso: double
+        #numeroPiezas: int
+        #descripcion: String 
+        #tipo: String
+        #galeria: String
+        #id: int
+        +Obra() // Constructor
+        +toString() String
+        +imprimirEtiqueta(): String
+        +getPrecioFinal(): double
+        +obtenerComision(): double
+        +obtenerPiezas(): double
+        +obtenerMsgPiezas(): String
+        +obtenerAltura(): double
+        +obtenerPeso(): double
+        +imprimirPrecio(): String
+    }
+    class Escultura extends Obra {
+        -SOBRECOSTE = 50: double
+        -material: String
+        +Escultura() // Constructor
+        +getPrecioFinalEsc(): double
+        +imprimirPrecioEsc(): double
+        +getDescuento(): double
+    }
+    class Pictorica extends Obra {
+        -tecnica: String
+        +Pictorica() // Constructor
+        +getPrecioFinalPic(): double
+        +getDescuento(): double
+        +imprimirPrecioPic(): double
+    }
+    class Autor {
+        -id: int
+        -nautor: String
+        -anoNacimiento: int
+        -estilo: String
+        +Autor() //Constructor
+    }
+    class Galeria {
+        -nombre: String
+        -ubicacion: String
+        +Galeria() //Constructor
+    }
+
+    package es/tiernoparla/dam/galeria/model/BBDD {
+        interface GaleriaDAO {
+            +obtenerObras(): List<Obra> 
+            +add(Pictorica obra): void
+            +add(Escultura obra): void 
+            +modify(Pictorica obra): void 
+            +modify(Escultura obra): void 
+        }
+        class SQLiteGaleriaDAO implements GaleriaDAO {
+            -obtenerIDAut(Obra obra): int
+            -crearAutor(Obra obra, int idAutor): void
+        }
+        class DAOFactory{
+            +{static}MODO_TEST = 0: int
+            +{static}MODO_SQLITE = 1: int
+            +getDao(int modo): GaleriaDAO
+        }
+        class TestGaleriaDAO implements GaleriaDAO {
+            -lista: List<Obra>
+            +obtenerObras(): List<Obra>
+        }
+    }
+
+    package es/tiernoparla/dam/galeria/model/XML {
+        interface GaleriaXMLDAO {
+            +importar(): void
+        }
+        class SQLiteXMLGaleriaDAO {
+            +add(Autor autor): void
+            +add(Escultura escultura): void
+            +add(Escultura obra): void
+            +add(Pictorica pictorica): void
+            +add(Galeria galeria): void
+            +obtenerIDAut(Obra obra): int
+            +crearAutor(Obra obra, int idAutor): int
+        }
+        class DAOFactoryXML {
+            +{static}MODO_TEST = 0: int
+            +{static}MODO_XML = 1: int
+            +getDao(int modo): GaleriaXMLDAO
+        }
+        class XMLGaleriaDAO implements GaleriaXMLDAO {}
+        class TestXMLGaleriaDAO implements GaleriaXMLDAO {}
+    }
+    
+
+
+}
+
+GaleriaController ..> DAOFactory: use
+GaleriaController ..> DAOFactoryXML: use
+GaleriaDAO <. DAOFactory: use
+Galeria "0..1" o-- "1..*" Obra 
+Autor *-- "1..*" Obra 
+Obra ...> GaleriaDAO: use
+Obra ..> GaleriaXMLDAO: use
+DAOFactoryXML .> GaleriaXMLDAO: use
+SQLiteXMLGaleriaDAO ..> GaleriaXMLDAO: use 
 
 @enduml
 ```
@@ -393,8 +592,53 @@ Y el diagrama de navegación entre estas distintas pantallas queda de la siguien
 ![Diagrama de navegación](img/Prototipo/diagramanavegacion.png)
 
 
-**COSAS QUE FALTAN:**[Diseño de las pruebas, Diseño de los ficheros de intercambio de datos (qué lenguaje, cómo se define la estructura...), documentación del código]
+## Diseño de las pruebas
 
+Para los **métodos "getPrecioFinalPic" y "getPrecioFinalEsc"**:
+
+Constantes para estos métodos:
+
+|Constante|Valor|
+|--|--|
+|Comisión|+25%|
+
+Variables que se tienen que tener en cuenta: precio inicial de la obra, peso, altura, número de piezas y tipo de obra.
+Valores:
+
+|Variable|Rango|Precio|
+|--|--|--|
+|Precio inicial|-|(0, infinito)|
+|Peso|[0, 1]|+20|
+|Peso|(1, infinito)|+100|
+|Altura|[0, 2]|+20|
+|Altura|(2, infinito)|+100|
+|Num piezas|[0, 2]|0|
+|Num piezas|(2, infinito)|+10/pieza|
+|Tipo Pintura|-|-10%|
+|Tipo Escultura|-|-20%|
+|Tipo Escultura|-|+50|
+
+Según estos datos, se pueden tener los siguientes casos de prueba para estos métodos (los valores límite y más representativos), donde al precio inicial de la obra se le da valor 100 en todos los casos:
+
+|CP|Variables-Entradas| | | | |Salidas|
+|--|--|--|--|--|--|--|
+| |Precio inicial|Peso|Altura|Num Piezas|Tipo|
+|CP1|100|1|1|2|Pintura|148.5|
+|CP2|100|2|1|1|Pintura|220.5|
+|CP3|100|1|3|1|Pintura|220.5|
+|CP4|100|1|2|1|Pintura|148.5|
+|CP5|100|1|1|1|Pintura|148.5|
+|CP6|100|1|1|4|Pintura|166.5|
+|CP7|100|1|1|0|Escultura|182|
+|CP8|100|1|2|1|Escultura|246|
+|CP9|100|1|3|1|Escultura|246|
+|CP10|100|1|2|1|Escultura|182|
+|CP11|100|1|1|1|Escultura|182|
+|CP12|100|1|1|4|Escultura|198|
+
+### Pruebas
+
+Implementadas con JUnit en la clase ObraTest. Las 12 pruebas realizadas a los métodos getPrecioFinalPic y getPrecioFinalEsc han sido correctas.
 
 # Workstation
 

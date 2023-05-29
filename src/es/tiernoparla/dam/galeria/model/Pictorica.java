@@ -1,5 +1,10 @@
 package es.tiernoparla.dam.galeria.model;
 
+/**
+ * @author Rubén y Dalia
+ * @version 1.0
+ * Esta clase recoge los atributos y métodos específicos de la clase Pictórica, que hereda de la clase Obra
+ */
 public class Pictorica extends Obra {
 
     private String tecnica;
@@ -16,6 +21,10 @@ public class Pictorica extends Obra {
         return super.toString() + "\n" + MSG_TECNICA;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getPrecioFinalPic(){
         double DESCUENTOPIC = getDescuento();
         double precioFinalsinMod = 0;
@@ -24,11 +33,19 @@ public class Pictorica extends Obra {
         return precioFinalMod;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getDescuento() {
         double DESCUENTOPIC = super.getPrecioFinal() * 0.1;
         return DESCUENTOPIC;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String imprimirPrecioPic(){
         return "\nDescuento (10% Óleo €): " + this.getDescuento() + "\nPrecio final de venta (€): " + String.valueOf(this.getPrecioFinalPic());
     }

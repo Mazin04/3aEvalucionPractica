@@ -14,6 +14,10 @@ import es.tiernoparla.dam.galeria.model.Escultura;
 import es.tiernoparla.dam.galeria.model.Obra;
 import es.tiernoparla.dam.galeria.model.Pictorica;
 
+/**
+ * @author Rubén y Dalia
+ * @version 1.0
+ */
 public class SQLiteGaleriaDAO implements GaleriaDAO{
     private static final String URL = "jdbc:sqlite:galeria.db";
     private static final String USER = "system";
@@ -24,12 +28,22 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         this.conn = connect();
     }
 
+    
+    /** 
+     * @return Connection
+     * @throws SQLException
+     */
     private static Connection connect() throws SQLException{
         Connection conn = null;
         conn = DriverManager.getConnection(URL, USER, PASSWORD);
         return conn;
     }
 
+    
+    /** 
+     * @return List<Obra>
+     * @throws Exception
+     */
     @Override
     public List<Obra> obtenerObras() throws Exception {
         List<Obra> lista = new ArrayList<Obra>();
@@ -46,6 +60,11 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         return lista;
     }
 
+    
+    /** 
+     * @param obra
+     * @throws Exception
+     */
     @Override
     public void add(Pictorica obra) throws Exception {
         int idAutor = obtenerIDAut(obra);
@@ -88,6 +107,11 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         psPic.close();
     }
 
+    
+    /** 
+     * @param obra
+     * @throws Exception
+     */
     @Override
     public void add(Escultura obra) throws Exception {
         int idAutor = obtenerIDAut(obra);
@@ -130,6 +154,12 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         psEsc.close();
     }
 
+    
+    /** 
+     * @param obra
+     * @return int
+     * @throws SQLException
+     */
     private int obtenerIDAut(Obra obra) throws SQLException {
 
         //Obtener el id del autor que coincida con el nombre introducido
@@ -156,6 +186,12 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         }
     }
 
+    
+    /** 
+     * @param obra
+     * @param idAutor
+     * @throws SQLException
+     */
     private void crearAutor(Obra obra, int idAutor) throws SQLException {
         //Estilo aleatorio
         byte[] array = new byte[7];
@@ -181,6 +217,11 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         psAut.close();
     }
 
+    
+    /** 
+     * @param obra
+     * @throws Exception
+     */
     @Override
     public void modify(Pictorica obra) throws Exception {
         int idAutor = obtenerIDAut(obra);
@@ -214,6 +255,11 @@ public class SQLiteGaleriaDAO implements GaleriaDAO{
         psPic.close();
     }
 
+    
+    /** 
+     * @param obra
+     * @throws Exception
+     */
     @Override
     public void modify(Escultura obra) throws Exception {
         int idAutor = obtenerIDAut(obra);

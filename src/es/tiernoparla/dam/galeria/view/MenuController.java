@@ -1,10 +1,13 @@
 package es.tiernoparla.dam.galeria.view;
 
+/**
+ * @author Rubén y Dalia
+ * @version 1.0
+ */
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
 import es.tiernoparla.dam.galeria.model.Obra;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -16,6 +19,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Controlador de la vista menú
+ */
 public class MenuController extends ViewController{
     private static int contador = 0;
 
@@ -37,6 +43,11 @@ public class MenuController extends ViewController{
     @FXML
     private AnchorPane pantallamenu;
 
+    
+    /** 
+     * @param event
+     * @throws Exception
+     */
     @FXML
     void exportar(MouseEvent event) throws Exception {
         try (PrintWriter writer = new PrintWriter(new FileWriter("Obras.txt"))) {
@@ -51,10 +62,20 @@ public class MenuController extends ViewController{
         }
     }
 
+    
+    /** 
+     * @param obra
+     * @return String
+     */
     private String getObjectData(Obra obra) {
         return obra.toString();
     }
 
+    
+    /** 
+     * @param event
+     * @throws Exception
+     */
     @FXML
     void importar(MouseEvent event) throws Exception {
         if (contador == 0){
@@ -66,25 +87,53 @@ public class MenuController extends ViewController{
         }
     }
 
+    
+    /** 
+     * @param event
+     * @throws Exception
+     * Cambia la vista
+     */
     @FXML
     void irDarAlta(MouseEvent event) throws Exception {
         galeriaController.cargarVista(IVistas.VIEW_DARALTAUNO);
     }
 
+    
+    /** 
+     * @param event
+     * @throws Exception
+     * Cambia la vista
+     */
     @FXML
     void irExposicion(MouseEvent event) throws Exception{
         galeriaController.cargarVista(IVistas.VIEW_EXPO);
     }
 
+    
+    /** 
+     * @param event
+     * @throws Exception
+     * Cambia la vista
+     */
     @FXML
     void irSeleccionar(MouseEvent event) throws Exception {
         galeriaController.cargarVista(IVistas.VIEW_MODIFICAR);
     }
 
+    
+    /** 
+     * @param lista
+     */
     @Override
     public void init(List<Obra> lista) {
     }
 
+    
+    /** 
+     * @param msg
+     * @param tipo
+     * 
+     */
     private void mostrarAviso(String msg, AlertType tipo){
         Alert alerta = new Alert(tipo);
         alerta.setHeaderText(null);

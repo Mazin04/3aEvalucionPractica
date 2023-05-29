@@ -1,5 +1,11 @@
 package es.tiernoparla.dam.galeria.model;
 
+/**
+ * @author Rubén y Dalia
+ * @version 1.0
+ * 
+ * Implementación de la clase Autor
+ */
 public class Autor {
     private int id;
     private String nautor;

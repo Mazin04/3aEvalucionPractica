@@ -1,5 +1,10 @@
 package es.tiernoparla.dam.galeria.model;
 
+/**
+ * @author Rubén y Dalia
+ * @version 1.0
+ * Esta clase recoge los atributos y métodos específicos de la clase Escultura, que hereda de la clase Obra
+ */
 public class Escultura extends Obra {
     //Atributos
     private final double SOBRECOSTE = 50;
@@ -11,12 +16,20 @@ public class Escultura extends Obra {
         this.material = material;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString(){
         String MSG_MATERIAL = "   Material: " + material;
         return super.toString() + "\n" + MSG_MATERIAL;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getPrecioFinalEsc(){
 
         double descuentoEsc = getDescuento();
@@ -29,10 +42,18 @@ public class Escultura extends Obra {
         return precioFinalMod;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String imprimirPrecioEsc() {
         return "\nDescuento (20% Escultura €): " + this.getDescuento() + "\nPrecio por sobrecoste (€): " + this.getSOBRECOSTE() + "\nPrecio final de venta (€): " + String.valueOf(this.getPrecioFinalEsc());
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getDescuento() {
         final double DESCUENTOESC = super.getPrecioFinal() * 0.2;
         return DESCUENTOESC;

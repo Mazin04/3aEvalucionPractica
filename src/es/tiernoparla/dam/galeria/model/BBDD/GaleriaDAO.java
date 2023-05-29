@@ -1,11 +1,14 @@
 package es.tiernoparla.dam.galeria.model.BBDD;
 
 import java.util.List;
-
 import es.tiernoparla.dam.galeria.model.Escultura;
 import es.tiernoparla.dam.galeria.model.Obra;
 import es.tiernoparla.dam.galeria.model.Pictorica;
 
+/**
+ * @author Rubén y Dalia
+ * @version 1.0
+ */
 public interface GaleriaDAO{
     public List<Obra> obtenerObras() throws Exception;
     public void add(Pictorica obra) throws Exception;

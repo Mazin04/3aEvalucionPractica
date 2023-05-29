@@ -1,6 +1,10 @@
 package es.tiernoparla.dam.galeria.view;
-import java.util.List;
 
+/**
+ * @author Rubén y Dalia
+ * @version 1.0
+ */
+import java.util.List;
 import es.tiernoparla.dam.galeria.model.Obra;
 import es.tiernoparla.dam.galeria.model.Pictorica;
 import javafx.collections.FXCollections;
@@ -15,7 +19,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * Controlador de la tercera vista para dar de alta una nueva obra
+ * Esta vista controla que las obras nuevas sean de tipo Pintura
+ */
 public class DaraltasegController extends ViewController{
 
     @FXML
@@ -54,8 +61,16 @@ public class DaraltasegController extends ViewController{
     @FXML
     private TextField txfTecnica;
 
+    /**
+     * Elemento de tabla para añadir nuevas obras
+     */
     private ObservableList<Obra> obras = FXCollections.observableArrayList();
 
+    
+    /** 
+     * @param event
+     * @throws Exception
+     */
     @FXML
     void confirmarAlta(MouseEvent event) throws Exception {
         if(txfNombre.getText().isBlank() || txfAutor.getText().isBlank() || txfDesc.getText().isBlank() || txfGaleria.getText().isBlank() || txfTecnica.getText().isBlank()){
@@ -84,16 +99,30 @@ public class DaraltasegController extends ViewController{
         }
     }
 
+    
+    /** 
+     * @param event
+     * @throws Exception
+     */
     @FXML
     void irMenu(MouseEvent event) throws Exception {
         galeriaController.cargarVista(IVistas.VIEW_MENU);
     }
 
+    
+    /** 
+     * @param lista
+     */
     @Override
     public void init(List<Obra> lista) {
         obras.addAll(lista);
     }
 
+    
+    /** 
+     * @param msg
+     * @param tipo
+     */
     private void mostrarAviso(String msg, AlertType tipo){
         Alert alerta = new Alert(tipo);
         alerta.setHeaderText(null);

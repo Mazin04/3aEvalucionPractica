@@ -6,14 +6,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
-
 import es.tiernoparla.dam.galeria.model.Autor;
 import es.tiernoparla.dam.galeria.model.Escultura;
 import es.tiernoparla.dam.galeria.model.Galeria;
 import es.tiernoparla.dam.galeria.model.Obra;
 import es.tiernoparla.dam.galeria.model.Pictorica;
 
-
+/**
+ * @author Rubén y Dalia
+ * @version 1.0
+ */
 public class SQLiteXMLGaleriaDAO{
     private static final String URL = "jdbc:sqlite:galeria.db";
     private static final String USER = "system";
@@ -24,12 +26,22 @@ public class SQLiteXMLGaleriaDAO{
         this.conn = connect();
     }
 
+    
+    /** 
+     * @return Connection
+     * @throws SQLException
+     */
     private static Connection connect() throws SQLException{
         Connection conn = null;
         conn = DriverManager.getConnection(URL, USER, PASSWORD);
         return conn;
     }
 
+    
+    /** 
+     * @param autor
+     * @throws SQLException
+     */
     public void add(Autor autor) throws SQLException {
         final String sqlID = "SELECT MAX(ID_AUTOR) FROM AUTOR";
         PreparedStatement psID = conn.prepareStatement(sqlID);
@@ -52,6 +64,11 @@ public class SQLiteXMLGaleriaDAO{
         psAut.close();
     }
 
+    
+    /** 
+     * @param escultura
+     * @throws Exception
+     */
     public void add(Escultura escultura) throws Exception {
         int idAutor = obtenerIDAut(escultura);
 
@@ -93,6 +110,11 @@ public class SQLiteXMLGaleriaDAO{
         psEsc.close();
     }
 
+    
+    /** 
+     * @param pictorica
+     * @throws Exception
+     */
     public void add(Pictorica pictorica) throws Exception {
         int idAutor = obtenerIDAut(pictorica);
 
@@ -135,6 +157,11 @@ public class SQLiteXMLGaleriaDAO{
         
     }
     
+    
+    /** 
+     * @param galeria
+     * @throws SQLException
+     */
     public void add(Galeria galeria) throws SQLException {
         final String sqlGal = "INSERT INTO GALERIA VALUES(?, ?)";
         PreparedStatement psGal = conn.prepareStatement(sqlGal);
@@ -148,6 +175,12 @@ public class SQLiteXMLGaleriaDAO{
         psGal.close();
     }
 
+    
+    /** 
+     * @param obra
+     * @return int
+     * @throws SQLException
+     */
     private int obtenerIDAut(Obra obra) throws SQLException {
 
         //Obtener el id del autor que coincida con el nombre introducido
@@ -174,6 +207,12 @@ public class SQLiteXMLGaleriaDAO{
         }
     }
 
+    
+    /** 
+     * @param obra
+     * @param idAutor
+     * @throws SQLException
+     */
     private void crearAutor(Obra obra, int idAutor) throws SQLException {
         //Estilo aleatorio
         byte[] array = new byte[7];

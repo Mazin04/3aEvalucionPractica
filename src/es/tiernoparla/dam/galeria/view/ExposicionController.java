@@ -1,7 +1,10 @@
 package es.tiernoparla.dam.galeria.view;
 
+/**
+ * @author Rubén y Dalia
+ * @version 1.0
+ */
 import java.util.List;
-
 import es.tiernoparla.dam.galeria.model.Escultura;
 import es.tiernoparla.dam.galeria.model.Obra;
 import es.tiernoparla.dam.galeria.model.Pictorica;
@@ -16,6 +19,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * Controlador de la vista exposición
+ */
 public class ExposicionController extends ViewController{
 
     @FXML
@@ -60,8 +66,15 @@ public class ExposicionController extends ViewController{
     @FXML
     private TableView<Obra> tblObras;
 
+    /**
+     * Elemento de tabla para añadir nuevas obras
+     */
     private ObservableList<Obra> obras;
 
+    
+    /** 
+     * @throws Exception
+     */
     @FXML
     public void initialize() throws Exception{
         obras = FXCollections.observableArrayList();
@@ -88,11 +101,20 @@ public class ExposicionController extends ViewController{
     }
 
 
+    
+    /** 
+     * @param event
+     * @throws Exception
+     */
     @FXML
     void irMenu(MouseEvent event) throws Exception {
         galeriaController.cargarVista(IVistas.VIEW_MENU);
     }
 
+    
+    /** 
+     * @param lista
+     */
     @Override
     public void init(List<Obra> lista) {
         obras.addAll(lista);

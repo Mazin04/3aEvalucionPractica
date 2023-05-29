@@ -1,5 +1,10 @@
 package es.tiernoparla.dam.galeria.model;
 
+/**
+ * @author Rubén y Dalia
+ * @version 1.0
+ * Esta clase recoge los atributos y métodos generales de la clase Obra, de la cual heredan otras dos clases
+ */
 public abstract class Obra {
     //Atributos
     protected final String UNIDAD_MONEDA_EUR = "EUR";
@@ -33,6 +38,10 @@ public abstract class Obra {
         contador++;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString(){ 
         String MSG_NOMBRE = "Nombre: " + nombre;
@@ -49,6 +58,10 @@ public abstract class Obra {
         return MSG_NOMBRE + "\n" + MSG_ID + "\n" + MSG_TIPO + "\n" + MSG_AUTOR + "\n" + MSG_PRECIO + "\n" + MSG_ALTURA + "\n" + MSG_PESO + "\n" + MSG_NUMPIEZAS + "\n" + MSG_DESCRIPCION + "\n" + MSG_GALERIA;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String imprimirEtiqueta(){
         String MSG_NOMBRE = "Nombre: " + nombre;
         String MSG_AUTOR = "Autor: " + autor;
@@ -56,26 +69,33 @@ public abstract class Obra {
         return MSG_NOMBRE + "\n" + MSG_AUTOR + "\n" + MSG_DESCRIPCION;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getPrecioFinal(){
-
         double precioComision = obtenerComision();
-
         double precioPeso = obtenerPeso();
-
         double precioAltura = obtenerAltura();
-
         double precioPiezas = obtenerPiezas();
-
         double precioFinal = this.getPrecio() + precioComision + precioPeso + precioAltura + precioPiezas;
         return precioFinal;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double obtenerComision() {
         final double INCREMENTO = 0.25;
         double precioComision = this.getPrecio()*INCREMENTO; //Comision Galeria
         return precioComision;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double obtenerPiezas() {
         final int FORPRECIO = 2;
         final int PRECIOADICIONAL = 10;
@@ -87,6 +107,10 @@ public abstract class Obra {
         return precioPiezas;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String obtenerMsgPiezas(){
         String msg ="";
         if(this.getNumeroPiezas() > 2){
@@ -97,6 +121,10 @@ public abstract class Obra {
         return msg;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double obtenerAltura() {
         final int ALTURAMINIMA = 2;
         double precioAltura;
@@ -108,6 +136,10 @@ public abstract class Obra {
         return precioAltura;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double obtenerPeso() {
         final int PESOMINIMO = 1;
         double precioPeso;
@@ -119,6 +151,10 @@ public abstract class Obra {
         return precioPeso;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String imprimirPrecio(){
         return "Nombre: " + this.getNombre() + "\nAltura (m): "+ this.getAltura() + "\nPeso: " + this.getPrecio() + "\nNúmero de piezas: " + this.getNumeroPiezas() + "\nPrecio (€): " + this.getPrecio() + "\nComisión Galería (€): " + this.obtenerComision() + "\nImporte por peso (€): " + this.obtenerPeso() + "\nImporte por altura (€): " + this.obtenerAltura() + this.obtenerMsgPiezas() + "\nPrecio de venta (€): " + this.getPrecioFinal();
     }

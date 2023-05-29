@@ -1,7 +1,10 @@
 package es.tiernoparla.dam.galeria.view;
 
+/**
+ * @author Rubén y Dalia
+ * @version 1.0
+ */
 import java.util.List;
-
 import es.tiernoparla.dam.galeria.model.Obra;
 import es.tiernoparla.dam.galeria.model.Pictorica;
 import es.tiernoparla.dam.galeria.model.Escultura;
@@ -22,6 +25,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Controlador de la vista modificar
+ */
 public class ModificarController extends ViewController{
     @FXML
     private Button btnCancelar;
@@ -89,8 +95,14 @@ public class ModificarController extends ViewController{
     @FXML
     private TextField txfPrecio;
 
+    /**
+     * Elemento de tabla para añadir nuevas obras
+     */
     private ObservableList<Obra> obras = FXCollections.observableArrayList();
 
+    /**
+     * Inicializa la colección de obras y asocia las columnas a los atributos 
+     */
     @FXML
     public void initialize() throws Exception{
         obras = FXCollections.observableArrayList();
@@ -113,6 +125,11 @@ public class ModificarController extends ViewController{
     }
 
 
+    
+    /** 
+     * @param event
+     * 
+     */
     @FXML
     void calcularPrecio(MouseEvent event) {
         Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
@@ -124,17 +141,31 @@ public class ModificarController extends ViewController{
         }
     } 
 
+    
+    /** 
+     * @param event
+     */
     @FXML
     void imprimir(MouseEvent event) {
         Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
         mostrarAviso(obra.imprimirEtiqueta(), AlertType.INFORMATION);
     }
 
+    
+    /** 
+     * @param event
+     * @throws Exception
+     */
     @FXML
     void irMenu(MouseEvent event) throws Exception {
         galeriaController.cargarVista(IVistas.VIEW_MENU);
     }
 
+    
+    /** 
+     * @param event
+     * @throws Exception
+     */
     @FXML
     void modificar(MouseEvent event) throws Exception {
         Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
@@ -155,6 +186,11 @@ public class ModificarController extends ViewController{
         }
     }
 
+    
+    /** 
+     * @param obra
+     * @throws Exception
+     */
     private void modificarEscultura(Escultura obra) throws Exception {
         try {
             String nombre = txfNombre.getText();
@@ -189,6 +225,11 @@ public class ModificarController extends ViewController{
     }
 
 
+    
+    /** 
+     * @param obra
+     * @throws Exception
+     */
     private void modificarPictorica(Pictorica obra) throws Exception {    
         try {
             String nombre = txfNombre.getText();
@@ -221,12 +262,20 @@ public class ModificarController extends ViewController{
     }
 
 
+    
+    /** 
+     * @param event
+     */
     @FXML
     void visualizar(MouseEvent event) {
         Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
         mostrarAviso(obra.toString(), AlertType.INFORMATION);
     }
 
+    
+    /** 
+     * @param event
+     */
     @FXML
     void seleccionarObra(MouseEvent event) {    
         Obra obra = this.tblObras.getSelectionModel().getSelectedItem();
@@ -239,6 +288,10 @@ public class ModificarController extends ViewController{
         }
     }
 
+    
+    /** 
+     * @param obra
+     */
     private void copiarDatosFormularioEscultura(Escultura obra) {
         this.txfNombre.setText(obra.getNombre());
         this.txfAutor.setText(obra.getAutor());
@@ -252,6 +305,10 @@ public class ModificarController extends ViewController{
     }
 
 
+    
+    /** 
+     * @param obra
+     */
     private void copiarDatosFormularioPictorica(Pictorica obra){
         this.txfNombre.setText(obra.getNombre());
         this.txfAutor.setText(obra.getAutor());
@@ -264,12 +321,21 @@ public class ModificarController extends ViewController{
         this.txfGaleria.setText(obra.getGaleria());
     }
 
+    
+    /** 
+     * @param lista
+     */
     @Override
     public void init(List<Obra> lista) {
         obras.addAll(lista);
         this.tblObras.setItems(obras);
     }
 
+    
+    /** 
+     * @param msg
+     * @param tipo
+     */
     private void mostrarAviso(String msg, AlertType tipo){
         Alert alerta = new Alert(tipo);
         alerta.setHeaderText(null);

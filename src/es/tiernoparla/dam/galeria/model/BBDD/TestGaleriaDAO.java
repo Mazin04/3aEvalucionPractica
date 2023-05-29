@@ -2,15 +2,23 @@ package es.tiernoparla.dam.galeria.model.BBDD;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import es.tiernoparla.dam.galeria.model.Escultura;
 import es.tiernoparla.dam.galeria.model.Obra;
 import es.tiernoparla.dam.galeria.model.Pictorica;
 
+/**
+ * @author Rubén y Dalia
+ * @version 1.0
+ */
 public class TestGaleriaDAO implements GaleriaDAO {
 
     private List<Obra> lista = new ArrayList<>();
 
+    
+    /** 
+     * @return List<Obra>
+     * @throws Exception
+     */
     @Override
     public List<Obra> obtenerObras() throws Exception {
         if(lista.size()==0){
@@ -25,20 +33,40 @@ public class TestGaleriaDAO implements GaleriaDAO {
         return lista;
     }
 
+    
+    /** 
+     * @param obra
+     * @throws Exception
+     */
     @Override
     public void add(Pictorica obra) throws Exception {
         lista.add(obra);
     }
     
+    
+    /** 
+     * @param obra
+     * @throws Exception
+     */
     @Override
     public void add(Escultura obra) throws Exception {
         lista.add(obra);
     }
 
+    
+    /** 
+     * @param obra
+     * @throws Exception
+     */
     @Override
     public void modify(Pictorica obra) throws Exception {
     }
 
+    
+    /** 
+     * @param obra
+     * @throws Exception
+     */
     @Override
     public void modify(Escultura obra) throws Exception {
     }

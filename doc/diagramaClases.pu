@@ -36,6 +36,8 @@ package es/tiernoparla/dam/galeria/view{
         ~irDarAlta(MouseEvent event): void
         ~irExposicion(MouseEvent event): void
         ~irSeleccionar(MouseEvent event): void
+        ~exportar(MouseEvent event): void
+        ~mostrarAviso(String msg, AlertType tipo): void
     }
 
     class ModificarController extends ViewController {
@@ -67,8 +69,6 @@ package es/tiernoparla/dam/galeria/view{
     ViewController .> IVistas: use
 
 }
-
-
 
 package es/tiernoparla/dam/galeria/controller{
 
@@ -141,30 +141,64 @@ package es/tiernoparla/dam/galeria/model{
         -ubicacion: String
         +Galeria() //Constructor
     }
-    interface GaleriaDAO {
-        +obtenerObras(): List<Obra> 
-        +add(Pictorica obra): void
-        +add(Escultura obra): void 
-        +modify(Pictorica obra): void 
-        +modify(Escultura obra): void 
+
+    package es/tiernoparla/dam/galeria/model/BBDD {
+        interface GaleriaDAO {
+            +obtenerObras(): List<Obra> 
+            +add(Pictorica obra): void
+            +add(Escultura obra): void 
+            +modify(Pictorica obra): void 
+            +modify(Escultura obra): void 
+        }
+        class SQLiteGaleriaDAO implements GaleriaDAO {
+            -obtenerIDAut(Obra obra): int
+            -crearAutor(Obra obra, int idAutor): void
+        }
+        class DAOFactory{
+            +{static}MODO_TEST = 0: int
+            +{static}MODO_SQLITE = 1: int
+            +getDao(int modo): GaleriaDAO
+        }
+        class TestGaleriaDAO implements GaleriaDAO {
+            -lista: List<Obra>
+            +obtenerObras(): List<Obra>
+        }
     }
-    class SQLiteGaleriaDAO implements GaleriaDAO {
-        -obtenerIDAut(Obra obra): int
-        -crearAutor(Obra obra, int idAutor): void
+
+    package es/tiernoparla/dam/galeria/model/XML {
+        interface GaleriaXMLDAO {
+            +importar(): void
+        }
+        class SQLiteXMLGaleriaDAO {
+            +add(Autor autor): void
+            +add(Escultura escultura): void
+            +add(Escultura obra): void
+            +add(Pictorica pictorica): void
+            +add(Galeria galeria): void
+            +obtenerIDAut(Obra obra): int
+            +crearAutor(Obra obra, int idAutor): int
+        }
+        class DAOFactoryXML {
+            +{static}MODO_TEST = 0: int
+            +{static}MODO_XML = 1: int
+            +getDao(int modo): GaleriaXMLDAO
+        }
+        class XMLGaleriaDAO implements GaleriaXMLDAO {}
+        class TestXMLGaleriaDAO implements GaleriaXMLDAO {}
     }
-    class XMLGaleriaDAO implements GaleriaDAO {}
-    class TestGaleriaDAO implements GaleriaDAO {}
-    class DAOFactory{
-        +{static}MODO_TEST = 0: int
-        +{static}MODO_SQLITE = 1: int
-        +{static}MODO_XML = 2: int
-    }
+    
+
+
 }
 
 GaleriaController ..> DAOFactory: use
-GaleriaDAO .> DAOFactory: use
+GaleriaController ..> DAOFactoryXML: use
+GaleriaDAO <. DAOFactory: use
 Galeria "0..1" o-- "1..*" Obra 
 Autor *-- "1..*" Obra 
 Obra ...> GaleriaDAO: use
+Obra ..> GaleriaXMLDAO: use
+DAOFactoryXML .> GaleriaXMLDAO: use
+SQLiteXMLGaleriaDAO ..> GaleriaXMLDAO: use 
 
 @enduml
